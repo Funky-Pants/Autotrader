@@ -1,1 +1,165 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: ObelixPro;
+    src: url('./assets/font/obelixpro/ObelixProIt-cyr.ttf');
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: "ObelixPro", Roboto, "Helvetica Neue", sans-serif;
+    letter-spacing: 0.4px;
+}
+
+
+/* Track */
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px #1a191e;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background: #1a191e;
+}
+
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+    background: #f03250;
+    border-radius: 10px;
+    transition: .3s;
+}
+
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+    background: #c5233c;
+    cursor: pointer;
+}
+
+::selection {
+    background: rgba(240, 50, 78, 0.8);
+    color: #fff;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    color: #111111;
+    font-weight: 400;
+    font-family: "ObelixPro", sans-serif;
+    letter-spacing: 0.4px;
+}
+
+p {
+    font-size: 15px;
+    font-family: "Cairo", sans-serif;
+    color: #424141;
+    font-weight: 400;
+    line-height: 25px;
+}
+
+img {
+    max-width: 100%;
+}
+
+input:focus,
+select:focus,
+button:focus,
+textarea:focus {
+    outline: none;
+}
+
+a,
+a:hover,
+a:focus {
+    text-decoration: none;
+    outline: none;
+    color: #ffffff;
+}
+
+ul,
+ol {
+    padding: 0;
+    margin: 0;
+}
+
+
+/*---------------------
+  Helper CSS
+-----------------------*/
+
+.section-title {
+    margin-bottom: 40px;
+    text-align: center;
+    h2 {
+        font-weight: 700;
+        color: #323232;
+        margin-bottom: 10px;
+    }
+    p {
+        color: #424141;
+    }
+}
+
+.set-bg {
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: calc(100vh);
+    background-position: center center;
+    background-attachment: fixed;
+}
+
+.spad {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.text-white h1,
+.text-white h2,
+.text-white h3,
+.text-white h4,
+.text-white h5,
+.text-white h6,
+.text-white p,
+.text-white span,
+.text-white li,
+.text-white a {
+    color: #fff;
+}
+
+.fa-user-plus,
+.fa-sign-in-alt,
+.fa-user,
+.fa-sign-out-alt,
+.fa-car {
+    font-size: 20px;
+}
+
+.fa-eye,
+.fa-trash-alt,
+.fa-search,
+.form-group .fa-user-plus,
+.form-group .fa-sign-in-alt,
+.fa-plus-circle,
+.fa-user-edit,
+.fa-phone,
+.fa-globe {
+    font-size: 16px;
+}
+
+.text-right {
+    text-align: right;
+}
