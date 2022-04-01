@@ -1,0 +1,77 @@
+/*---------------------
+  Listing
+-----------------------*/
+
+.listing-item {
+    -webkit-box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    .listing-item-pic img {
+        width: 100%;
+    }
+    .listing-item-text-title {
+        h5 {
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+    }
+    .listing-item-text {
+        padding: 15px 10px 0;
+        .listing-item-price {
+            margin-bottom: 15px;
+            h6 {
+                font-size: 15px;
+                color: var(--color-red);
+                font-weight: 400;
+                text-align: right;
+                font-family: "Cairo", sans-serif;
+            }
+        }
+        .listing-item-text-info {
+            padding: 10px 10px;
+            border-top: 1px solid var(--color-white);
+            margin-left: -10px;
+            margin-right: -10px;
+            ul li {
+                font-size: 14px;
+                color: var(--color-dark);
+                list-style: none;
+                float: left;
+                font-family: "Cairo", sans-serif;
+            }
+            ul li::after {
+                content: '|';
+                margin: 0 7px;
+            }
+            ul li:last-child::after {
+                content: '';
+                margin-right: 0;
+            }
+        }
+        .listing-item-button {
+            background: var(--color-red);
+            color: var(--color-white);
+            font-size: 12px;
+            width: 100%;
+        }
+        .listing-item-button:hover,
+        .edit-button:hover {
+            background: var(--color-dark);
+        }
+        .delete-button:hover {
+            background: var(--color-black);
+        }
+        .delete-button {
+            background: var(--color-dark);
+            color: var(--color-white);
+            font-size: 12px;
+            width: 100%;
+        }
+        .edit-button {
+            background: var(--color-yellow);
+            color: var(--color-white);
+            font-size: 12px;
+            width: 100%;
+        }
+    }
+}

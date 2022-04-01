@@ -1,0 +1,275 @@
+<div class="bg-dark spad">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h1 class="text-center text-white">Добави обява</h1>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="sell-car-container" class="container my-3">
+    <div class="row">
+        <div class="col-md-12">
+            <form id="sell-car" method="POST" action="sell-car" enctype="multipart/form-data">
+                <div class="form-group row">
+                    <div class="select-option col-md-3 mt-3">
+                        <label for="input-make">Марка</label>
+                        <select id="input-make" name="make">
+                            <option value="" ></option>
+                            <option value="Alfa Romeo" >Alfa Romeo</option>
+                            <option value="Audi" >Audi</option>
+                            <option value="Ford" >Ford</option>
+                        </select>
+                    </div>
+                    <div class="select-option col-md-3 mt-3">
+                        <label for="input-model">Модел</label>
+                        <select id="input-model" name="model">
+                            <option value=""></option>
+                            <option value="Giulietta">Giulietta</option>
+                            <option value="A3">A3</option>
+                            <option value="Mustang">Mustang</option>
+                            <option value="F 150">F 150</option>
+                        </select>
+                    </div>
+                    <div class="select-option col-md-3 mt-3">
+                        <label for="input-specification">Спецификация</label>
+                        <input type="text" name="specification" class="form-control" id="input-specification" placeholder="Спецификация">
+                    </div>
+                    <div class="select-option gearbox col-md-3 mt-3">
+                        <label for="input-gearbox">Скорости</label>
+                        <select id="input-gearbox" name="gearbox">
+                            <option value=""></option>
+                            <option value="Manual">Ръчни</option>
+                            <option value="Automatic">Автоматични</option>
+                            <option value="Semi-Automatic">Полуавтоматични</option>
+                        </select>
+                    </div>
+                    <div class="select-option col-md-3 mt-3">
+                        <label for="input-month">Първа регистрация - Месец</label>
+                        <select id="input-month" name="month">
+                            <option value=""></option>
+                            <option value="Януари">Януари</option>
+                            <option value="Февруари">Февруари</option>
+                            <option value="Март">Март</option>
+                            <option value="Април">Април</option>
+                            <option value="May">May</option>
+                            <option value="June">June</option>
+                            <option value="July">July</option>
+                            <option value="August">August</option>
+                            <option value="September">September</option>
+                            <option value="October">October</option>
+                            <option value="November">November</option>
+                            <option value="December">December</option>
+                        </select>
+                    </div>
+                    <div class="select-option col-md-3 mt-3">
+                        <label for="input-firs-registration">First Registration - Year</label>
+                        <select id="input-firs-registration" name="year">
+                            <option value=""></option>
+                            <option value="2022">2022</option>;
+                        </select>
+                    </div>
+                    <div class="select-option col-md-3 mt-3">
+                        <label for="input-fuel">Тип двигател</label>
+                        <select id="input-fuel" name="fuel">
+                            <option value=""></option>
+                            <option value="Дизел">Дизел</option>
+                            <option value="Бензин">Бензин</option>
+                            <option value="Газ/Бензин">Газ/Бензин</option>
+                            <option value="Хибрид">Хибрид</option>
+                            <option value="Електрически">Електрически</option>
+                        </select>
+                    </div>
+                    <div class="select-option col-md-3 mt-3">
+                        <label for="input-emission-class">Emission Class</label>
+                        <select id="input-emission-class" name="emission_class">
+                            <option value=""></option>
+                            <option value="Euro 1">Euro 1</option>
+                            <option value="Euro 2">Euro 2</option>
+                            <option value="Euro 3">Euro 3</option>
+                            <option value="Euro 4">Euro 4</option>
+                            <option value="Euro 5">Euro 5</option>
+                            <option value="Euro 6">Euro 6</option>
+                            <option value="Euro6 c">Euro 6c</option>
+                            <option value="Euro 6d">Euro 6d</option>
+                        </select>
+                    </div>
+                    <div class="select-option col-md-3 mt-3">
+                        <label for="input-cubic-capacity">Обем на двигателя (в cm³)</label>
+                        <input type="number" name="cubic_capacity" class="form-control" id="input-cubic-capacity" placeholder="ex. 1 968">
+                    </div>
+                    <div class="select-option col-md-3 mt-3">
+                        <label for="input-power">Мощност (к.с.)</label>
+                        <input type="number" name="power" class="form-control" id="input-power" placeholder="ex. 150">
+                    </div>
+                    <div class="select-option col-md-3 mt-3">
+                        <label for="input-kilometres">Километри</label>
+                        <input type="number" name="kilometres" class="form-control" id="input-kilometres" placeholder="ex. 200 000">
+                    </div>
+                    <div class="select-option col-md-3 mt-3">
+                        <label for="input-color">Цвят</label>
+                        <input type="text" name="color" class="form-control" id="input-color" placeholder="ex. blue">
+                    </div>
+                    <div class="select-option col-md-3 mt-3">
+                        <label for="input-price">Цена</label>
+                        <input type="number" name="price" class="form-control" id="input-price" placeholder="ex 24 500">
+                    </div>
+                    <div class="select-option inputCurrency col-md-3 mt-3">
+                        <label for="input-currency">Валута</label>
+                        <select id="input-currency" name="currency">
+                            <option value="Лева">Лева</option>
+                            <option value="Евро">Евро</option>
+                            <option value="Паунда">Паунда</option>
+                            <option value="Долара">Долара</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <label class="mt-3">Безопастност</label>
+                        <div class="checkbox">
+                            <input class="form-check-input" name="GPS" type="checkbox" value="GPS система за проследяване" id="GPS"><label class="form-check-label" for="GPS">GPS система за проследяване</label>
+                            <input class="form-check-input" name="EPS" type="checkbox" value="Автоматичен контрол на стабилността" id="EPS"><label class="form-check-label" for="EPS">Автоматичен контрол на стабилността</label>
+                            <input class="form-check-input" name="AFL" type="checkbox" value="Адаптивни предни светлини" id="AFL"><label class="form-check-label" for="AFL">Адаптивни предни светлини</label>
+                            <input class="form-check-input" name="ABS" type="checkbox" value="Антиблокираща система" id="ABS"><label class="form-check-label" for="ABS">Антиблокираща система</label>
+                            <input class="form-check-input" name="AirBags1" type="checkbox" value="Въздушни възглавници - Задни" id="AirBags1"><label class="form-check-label" for="AirBags1">Въздушни възглавници - Задни</label>
+                            <input class="form-check-input" name="AirBags2" type="checkbox" value="Въздушни възглавници - Предни" id="AirBags2"><label class="form-check-label" for="AirBags2">Въздушни възглавници - Предни</label>
+                            <input class="form-check-input" name="AirBags3" type="checkbox" value="Въздушни възглавници - Странични" id="AirBags3"><label class="form-check-label" for="AirBags3">Въздушни възглавници - Странични</label>
+                            <input class="form-check-input" name="EBD" type="checkbox" value="Ел. разпределяне на спирачното усилие" id="EBD"><label class="form-check-label" for="EBD">Ел. разпределяне на спирачното усилие</label>
+                            <input class="form-check-input" name="ESP" type="checkbox" value="Електронна програма за стабилизиране" id="ESP"><label class="form-check-label" for="ESP">Електронна програма за стабилизиране</label>
+                            <input class="form-check-input" name="SmartTire" type="checkbox" value="Контрол на налягането на гумите" id="SmartTire"><label class="form-check-label" for="SmartTire">Контрол на налягането на гумите</label>
+                            <input class="form-check-input" name="PDC" type="checkbox" value="Парктроник" id="PDC"><label class="form-check-label" for="PDC">Парктроник</label>
+                            <input class="form-check-input" name="ISOFIX" type="checkbox" value="Система ISOFIX" id="ISOFIX"><label class="form-check-label" for="ISOFIX">Система ISOFIX</label>
+                            <input class="form-check-input" name="DSC" type="checkbox" value="Система за динамична устойчивост" id="DSC"><label class="form-check-label" for="DSC">Система за динамична устойчивост</label>
+                            <input class="form-check-input" name="ASR" type="checkbox" value="Система за защита от пробуксуване" id="ASR"><label class="form-check-label" for="ASR">Система за защита от пробуксуване</label>
+                            <input class="form-check-input" name="DBS" type="checkbox" value="Система за изсушаване на накладките" id="DBS"><label class="form-check-label" for="DBS">Система за изсушаване на накладките</label>
+                            <input class="form-check-input" name="DBS" type="checkbox" value="Система за контрол на дистанцията" id="Distronic"><label class="form-check-label" for="Distronic">Система за контрол на дистанцията</label>
+                            <input class="form-check-input" name="HDC" type="checkbox" value="Система за контрол на спускането" id="HDC"><label class="form-check-label" for="HDC">Система за контрол на спускането</label>
+                            <input class="form-check-input" name="BAS" type="checkbox" value="Система за подпомагане на спирането" id="BAS"><label class="form-check-label" for="BAS">Система за подпомагане на спирането</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="mt-3">Комфорт</label>
+                        <div class="checkbox">
+                            <input class="form-check-input" name="ASS" type="checkbox" value="Auto Start Stop function" id="ASS"><label class="form-check-label" for="ASS">Auto Start Stop function</label>
+                            <input class="form-check-input" name="Bloetooth" type="checkbox" value="Bluetooth \ handsfree система" id="Bloetooth"><label class="form-check-label" for="Bloetooth">Bluetooth \ handsfree система</label>
+                            <input class="form-check-input" name="DVD" type="checkbox" value="DVD, TV" id="DVD"><label class="form-check-label" for="DVD">DVD, TV</label>
+                            <input class="form-check-input" name="Steptronic" type="checkbox" value="Steptronic, Tiptronic" id="Steptronic"><label class="form-check-label" for="Steptronic">Steptronic, Tiptronic</label>
+                            <input class="form-check-input" name="USB" type="checkbox" value="USB, audio\video, IN\AUX изводи" id="USB"><label class="form-check-label" for="USB">USB, audio\video, IN\AUX изводи</label>
+                            <input class="form-check-input" name="Airmatic" type="checkbox" value="Адаптивно въздушно окачване" id="Airmatic"><label class="form-check-label" for="Airmatic">Адаптивно въздушно окачване</label>
+                            <input class="form-check-input" name="Keyless" type="checkbox" value="Безключово палене" id="Keyless"><label class="form-check-label" for="Keyless">Безключово палене</label>
+                            <input class="form-check-input" name="diffblock" type="checkbox" value="Блокаж на диференциала" id="diffblock"><label class="form-check-label" for="diffblock">Блокаж на диференциала</label>
+                            <input class="form-check-input" name="Bordcomp" type="checkbox" value="Бордкомпютър" id="Bordcomp"><label class="form-check-label" for="Bordcomp">Бордкомпютър</label>
+                            <input class="form-check-input" name="gears" type="checkbox" value="Бързи \ бавни скорости" id="gears"><label class="form-check-label" for="gears">Бързи \ бавни скорости</label>
+                            <input class="form-check-input" name="lightsensor" type="checkbox" value="Датчик за светлина" id="lightsensor"><label class="form-check-label" for="lightsensor">Датчик за светлина</label>
+                            <input class="form-check-input" name="mirrors" type="checkbox" value="Ел. Огледала" id="mirrors"><label class="form-check-label" for="mirrors">Ел. Огледала</label>
+                            <input class="form-check-input" name="wind" type="checkbox" value="Ел. Стъкла" id="wind"><label class="form-check-label" for="wind">Ел. Стъкла</label>
+                            <input class="form-check-input" name="susps" type="checkbox" value="Ел. регулиране на окачването" id="susps"><label class="form-check-label" for="susps">Ел. регулиране на окачването</label>
+                            <input class="form-check-input" name="seats" type="checkbox" value="Ел. регулиране на седалките" id="seats"><label class="form-check-label" for="seats">Ел. регулиране на седалките</label>
+                            <input class="form-check-input" name="elwheel" type="checkbox" value="Ел. усилвател на волана" id="elwheel"><label class="form-check-label" for="elwheel">Ел. усилвател на волана</label>
+                            <input class="form-check-input" name="AC" type="checkbox" value="Климатик" id="AC"><label class="form-check-label" for="AC">Климатик</label>
+                            <input class="form-check-input" name="ACC" type="checkbox" value="Климатроник" id="ACC"><label class="form-check-label" for="ACC">Климатроник</label>
+                            <input class="form-check-input" name="stearingwheel" type="checkbox" value="Мултифункционален волан" id="stearingwheel"><label class="form-check-label" for="stearingwheel">Мултифункционален волан</label>
+                            <input class="form-check-input" name="Navi" type="checkbox" value="Навигация" id="Navi"><label class="form-check-label" for="Navi">Навигация</label>
+                            <input class="form-check-input" name="wheelheat" type="checkbox" value="Отопление на волана" id="wheelheat"><label class="form-check-label" for="wheelheat">Отопление на волана</label>
+                            <input class="form-check-input" name="Pechka" type="checkbox" value="Печка" id="Pechka"><label class="form-check-label" for="Pechka">Печка</label>
+                            <input class="form-check-input" name="winheat" type="checkbox" value="Подгряване на предното стъкло" id="winheat"><label class="form-check-label" for="winheat">Подгряване на предното стъкло</label>
+                            <input class="form-check-input" name="seatheat" type="checkbox" value="Подгряване на седалките" id="seatheat"><label class="form-check-label" for="seatheat">Подгряване на седалките</label>
+                            <input class="form-check-input" name="stearingwheelreg" type="checkbox" value="Регулиране на волана" id="stearingwheelreg"><label class="form-check-label" for="stearingwheelreg">Регулиране на волана</label>
+                            <input class="form-check-input" name="rainsens" type="checkbox" value="Сензор за дъжд" id="rainsens"><label class="form-check-label" for="rainsens">Сензор за дъжд</label>
+                            <input class="form-check-input" name="servo" type="checkbox" value="Серво усилвател на волана" id="servo"><label class="form-check-label" for="servo">Серво усилвател на волана</label>
+                            <input class="form-check-input" name="headwash" type="checkbox" value="Система за измиване на фаровете" id="headwash"><label class="form-check-label" for="headwash">Система за измиване на фаровете</label>
+                            <input class="form-check-input" name="cruise" type="checkbox" value="Система за контрол на скоростта (автопилот)" id="cruise"><label class="form-check-label" for="cruise">Система за контрол на скоростта (автопилот)</label>
+                            <input class="form-check-input" name="stereo" type="checkbox" value="Стерео уредба" id="stereo"><label class="form-check-label" for="stereo">Стерео уредба</label>
+                            <input class="form-check-input" name="filtar" type="checkbox" value="Филтър за твърди частици" id="filtar"><label class="form-check-label" for="filtar">Филтър за твърди частици</label>
+                            <input class="form-check-input" name="glove" type="checkbox" value="Хладилна жабка" id="glove"><label class="form-check-label" for="glove">Хладилна жабка</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="mt-3">Други</label>
+                        <div class="checkbox">
+                            <input class="form-check-input" name="4x4" type="checkbox" value="4x4" id="4x4"><label class="form-check-label" for="4x4">4x4</label>
+                            <input class="form-check-input" name="7s" type="checkbox" value="7 места" id="7s"><label class="form-check-label" for="7s">7 места</label>
+                            <input class="form-check-input" name="bb" type="checkbox" value="Buy back" id="bb"><label class="form-check-label" for="bb">Buy back</label>
+                            <input class="form-check-input" name="barter" type="checkbox" value="Бартер" id="barter"><label class="form-check-label" for="barter">Бартер</label>
+                            <input class="form-check-input" name="gaz" type="checkbox" value="Газова уредба" id="gaz"><label class="form-check-label" for="gaz">Газова уредба</label>
+                            <input class="form-check-input" name="long" type="checkbox" value="Дълга база" id="long"><label class="form-check-label" for="long">Дълга база</label>
+                            <input class="form-check-input" name="kapo" type="checkbox" value="Капариран\Продаден" id="kapo"><label class="form-check-label" for="kapo">Капариран\Продаден</label>
+                            <input class="form-check-input" name="dmg" type="checkbox" value="Катастрофирал" id="dmg"><label class="form-check-label" for="dmg">Катастрофирал</label>
+                            <input class="form-check-input" name="short" type="checkbox" value="Къса база" id="short"><label class="form-check-label" for="short">Къса база</label>
+                            <input class="form-check-input" name="lease" type="checkbox" value="Лизинг" id="lease"><label class="form-check-label" for="lease">Лизинг</label>
+                            <input class="form-check-input" name="metan" type="checkbox" value="Метанова уредба" id="metan"><label class="form-check-label" for="metan">Метанова уредба</label>
+                            <input class="form-check-input" name="parts" type="checkbox" value="На части" id="parts"><label class="form-check-label" for="parts">На части</label>
+                            <input class="form-check-input" name="revise" type="checkbox" value="Напълно обслужен" id="revise"><label class="form-check-label" for="revise">Напълно обслужен</label>
+                            <input class="form-check-input" name="new" type="checkbox" value="Нов внос" id="new"><label class="form-check-label" for="new">Нов внос</label>
+                            <input class="form-check-input" name="dredit" type="checkbox" value="С право на дан.к-т" id="dredit"><label class="form-check-label" for="dredit">С право на дан.к-т</label>
+                            <input class="form-check-input" name="reg" type="checkbox" value="С регистрация" id="reg"><label class="form-check-label" for="reg">С регистрация</label>
+                            <input class="form-check-input" name="book" type="checkbox" value="Сервизна книжка" id="book"><label class="form-check-label" for="book">Сервизна книжка</label>
+                            <input class="form-check-input" name="tuning" type="checkbox" value="Тунинг" id="tuning"><label class="form-check-label" for="tuning">Тунинг</label>
+                        </div>
+                        <label class="mt-3">Екстериор</label>
+                        <div class="checkbox">
+                            <input class="form-check-input" name="2doors" type="checkbox" value="2(3) Врати" id="2doors"><label class="form-check-label" for="2doors">2(3) Врати</label>
+                            <input class="form-check-input" name="4doors" type="checkbox" value="4(5) Врати" id="4doors"><label class="form-check-label" for="4doors">4(5) Врати</label>
+                            <input class="form-check-input" name="led" type="checkbox" value="LED фарове" id="led"><label class="form-check-label" for="led">LED фарове</label>
+                            <input class="form-check-input" name="xenon" type="checkbox" value="Ксенонови фарове" id="xenon"><label class="form-check-label" for="xenon">Ксенонови фарове</label>
+                            <input class="form-check-input" name="alum" type="checkbox" value="Лети джанти" id="alum"><label class="form-check-label" for="alum">Лети джанти</label>
+                            <input class="form-check-input" name="metalic" type="checkbox" value="Металик" id="metalic"><label class="form-check-label" for="metalic">Металик</label>
+                            <input class="form-check-input" name="washs" type="checkbox" value="Отопляеми чистачки" id="washs"><label class="form-check-label" for="washs">Отопляеми чистачки</label>
+                            <input class="form-check-input" name="liuk" type="checkbox" value="Панорамен люк" id="liuk"><label class="form-check-label" for="liuk">Панорамен люк</label>
+                            <input class="form-check-input" name="reilink" type="checkbox" value="Рейлинг на покрива" id="reilink"><label class="form-check-label" for="reilink">Рейлинг на покрива</label>
+                            <input class="form-check-input" name="rolbars" type="checkbox" value="Ролбари" id="rolbars"><label class="form-check-label" for="rolbars">Ролбари</label>
+                            <input class="form-check-input" name="spoiler" type="checkbox" value="Спойлери" id="spoiler"><label class="form-check-label" for="spoiler">Спойлери</label>
+                            <input class="form-check-input" name="teglich" type="checkbox" value="Теглич" id="teglich"><label class="form-check-label" for="teglich">Теглич</label>
+                            <input class="form-check-input" name="halogen" type="checkbox" value="Халогенни фарове" id="halogen"><label class="form-check-label" for="halogen">Халогенни фарове</label>
+                            <input class="form-check-input" name="shibidah" type="checkbox" value="Шибедах" id="shibidah"><label class="form-check-label" for="shibidah">Шибедах</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="mt-3">Защита</label>
+                        <div class="checkbox">
+                            <input class="form-check-input" name="offroad" type="checkbox" value="OFFROAD пакет" id="offroad"><label class="form-check-label" for="offroad">OFFROAD пакет</label>
+                            <input class="form-check-input" name="alarm" type="checkbox" value="Аларма" id="alarm"><label class="form-check-label" for="alarm">Аларма</label>
+                            <input class="form-check-input" name="broniran" type="checkbox" value="Брониран" id="broniran"><label class="form-check-label" for="broniran">Брониран</label>
+                            <input class="form-check-input" name="imobilaizer" type="checkbox" value="Имобилайзер" id="imobilaizer"><label class="form-check-label" for="imobilaizer">Имобилайзер</label>
+                            <input class="form-check-input" name="kasko" type="checkbox" value="Каско" id="kasko"><label class="form-check-label" for="kasko">Каско</label>
+                            <input class="form-check-input" name="lebedka" type="checkbox" value="Лебедка" id="lebedka"><label class="form-check-label" for="lebedka">Лебедка</label>
+                            <input class="form-check-input" name="extrawin" type="checkbox" value="Подсилени стъкла" id="extrawin"><label class="form-check-label" for="extrawin">Подсилени стъкла</label>
+                            <input class="form-check-input" name="locks" type="checkbox" value="Централно заключване" id="locks"><label class="form-check-label" for="locks">Централно заключване</label>
+                        </div>
+                        <label class="mt-3">Интериор</label>
+                        <div class="checkbox">
+                            <input class="form-check-input" name="velsalon" type="checkbox" value="Велурен салон" id="velsalon"><label class="form-check-label" for="velsalon">Велурен салон</label>
+                            <input class="form-check-input" name="desen" type="checkbox" value="Десен волан" id="desen"><label class="form-check-label" for="desen">Десен волан</label>
+                            <input class="form-check-input" name="leather" type="checkbox" value="Кожен салон" id="leather"><label class="form-check-label" for="leather">Кожен салон</label>
+                        </div>
+                        <label class="mt-3">Специализирани</label>
+                        <div class="checkbox">
+                            <input class="form-check-input" name="TAXI" type="checkbox" value="TAXI" id="TAXI"><label class="form-check-label" for="TAXI">TAXI</label>
+                            <input class="form-check-input" name="invalidi" type="checkbox" value="За хора с увреждания" id="invalidi"><label class="form-check-label" for="invalidi">За хора с увреждания</label>
+                            <input class="form-check-input" name="katafalka" type="checkbox" value="Катафалка" id="katafalka"><label class="form-check-label" for="katafalka">Катафалка</label>
+                            <input class="form-check-input" name="amb" type="checkbox" value="Линейка" id="amb"><label class="form-check-label" for="amb">Линейка</label>
+                            <input class="form-check-input" name="learn" type="checkbox" value="Учебен" id="learn"><label class="form-check-label" for="learn">Учебен</label>
+                            <input class="form-check-input" name="cooler" type="checkbox" value="Хладилен" id="cooler"><label class="form-check-label" for="cooler">Хладилен</label>
+                            <input class="form-check-input" name="hamologaciq" type="checkbox" value="Хомологация N1" id="hamologaciq"><label class="form-check-label" for="hamologaciq">Хомологация N1</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="car-picture col-md-4 mt-3">
+                        <img id="profile-img" src="../../../assets/img/add-picture.png" alt="Add image" class="img-fluid">
+                        <input type="file" name="image" class="input" accept="image">
+                    </div>
+                    <div class="col-md-8 mt-3">
+                        <label for="input-more-information">Повече информация</label>
+                        <textarea id="input-more-information" name="more_info"></textarea>
+                    </div>
+                </div>
+                <div class="form-group row mt-3">
+                    <button type="submit" name="Publish" class="btn publish-button p-2"><i class="fas fa-plus-circle"></i> Публикувай обявата</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

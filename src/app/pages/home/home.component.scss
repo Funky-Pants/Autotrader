@@ -6,12 +6,12 @@
             h1 {
                 font-size: 60px;
                 margin-bottom: 20px;
-                text-shadow: 2px 2px 9px rgba(255, 255, 255, 1);
+                text-shadow: 2px 2px 9px var(--color-white);
             }
             h2 {
                 font-size: 30px;
-                color: #ffffff;
-                text-shadow: 2px 2px 9px rgba(0, 0, 0, 1);
+                color: var(--color-white);
+                text-shadow: 2px 2px 9px var(--color-black);
             }
             p {
                 color: #A8A8A8;
@@ -29,7 +29,7 @@
                 width: 20%;
                 float: left;
                 height: 54px;
-                border-right: 1px solid #183456;
+                border-right: 1px solid var(--color-dark);
                 .nice-select {
                     border: none;
                     border-radius: 0;
@@ -38,7 +38,7 @@
                     padding-left: 18px;
                     cursor: pointer;
                     font-size: 15px;
-                    color: #323232;
+                    color: var(--color-dark);
                     width: 100%;
                     option {
                         cursor: pointer;
@@ -59,8 +59,8 @@
                 border: none;
                 font-size: 14px;
                 font-weight: 700;
-                background: #f03250;
-                color: #ffffff;
+                background: var(--color-red);
+                color: var(--color-white);
                 text-transform: uppercase;
             }
         }
@@ -111,6 +111,69 @@
             .select-option:before {
                 display: none;
             }
+        }
+    }
+}
+
+
+/*---------------------
+  Listing
+-----------------------*/
+
+.listing-item {
+    -webkit-box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    .listing-item-pic img {
+        width: 100%;
+    }
+    .listing-item-text-title {
+        h5 {
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+    }
+    .listing-item-text {
+        padding: 15px 10px 0;
+        .listing-item-price {
+            margin-bottom: 15px;
+            h6 {
+                font-size: 15px;
+                color: var(--color-red);
+                font-weight: 400;
+                text-align: right;
+                font-family: "Cairo", sans-serif;
+            }
+        }
+        .listing-item-text-info {
+            padding: 10px 10px;
+            border-top: 1px solid var(--color-white);
+            margin-left: -10px;
+            margin-right: -10px;
+            ul li {
+                font-size: 14px;
+                color: var(--color-dark);
+                list-style: none;
+                float: left;
+                font-family: "Cairo", sans-serif;
+            }
+            ul li::after {
+                content: '|';
+                margin: 0 7px;
+            }
+            ul li:last-child::after {
+                content: '';
+                margin-right: 0;
+            }
+        }
+        .listing-item-button {
+            background: var(--color-red);
+            color: var(--color-white);
+            font-size: 12px;
+            width: 100%;
+        }
+        .listing-item-button:hover {
+            background: var(--color-dark);
         }
     }
 }

@@ -25,7 +25,7 @@
                         left: 0;
                         top: 50px;
                         width: 180px;
-                        background: #222222;
+                        background: var(--color-dark);
                         text-align: left;
                         -webkit-transition: all, 0.3s;
                         -o-transition: all, 0.3s;
@@ -44,7 +44,7 @@
                         }
                     }
                     a {
-                        color: #000;
+                        color: var(--color-black);
                         transition: all 0.3s ease;
                         font-size: 15px;
                         padding: 5px 0;
@@ -52,7 +52,7 @@
                         position: relative;
                     }
                     a:hover {
-                        color: #f03250;
+                        color: var(--color-red);
                     }
                     a:after {
                         position: absolute;
@@ -60,7 +60,7 @@
                         bottom: 0;
                         height: 2px;
                         width: 0%;
-                        background: #f03250;
+                        background: var(--color-red);
                         content: "";
                         opacity: 0;
                         -webkit-transition: all, 0.3s;
@@ -78,7 +78,7 @@
                         opacity: 1;
                         visibility: visible;
                         li a {
-                            color: #ffffff;
+                            color: var(--color-white);
                         }
                         li a:after {
                             display: none;
@@ -96,19 +96,19 @@
             .btn-sell {
                 margin-right: 15px;
                 padding: 10px 25px 10px;
-                color: #ffffff;
-                background: #f03250;
+                color: var(--color-white);
+                background: var(--color-red);
                 border-radius: 5px;
                 transition: all 0.3s ease;
             }
             .btn-sell:hover {
-                background: #d8213d;
+                background: var(--color-red);
             }
             .btn-user-menu {
-                color: #000;
+                color: var(--color-black);
                 height: 42px;
                 width: 42px;
-                border: 1px solid #000;
+                border: 1px solid var(--color-black);
                 border-radius: 50%;
                 line-height: 38px;
                 text-align: center;
@@ -124,7 +124,7 @@
                     height: 0;
                     border-style: solid;
                     border-width: 10px;
-                    border-color: transparent transparent #d8213d transparent;
+                    border-color: transparent transparent var(--color-red) transparent;
                 }
                 .user-menu {
                     position: absolute;
@@ -143,12 +143,12 @@
                     }
                     a {
                         display: block;
-                        color: #424141;
+                        color: var(--color-dark);
                         transition: all 0.5s ease;
                         margin: 10px 0;
                     }
                     a:hover {
-                        color: #d8213d;
+                        color: var(--color-red);
                     }
                 }
                 .btn-user-menu:hover+.user-menu {
@@ -156,8 +156,8 @@
                 }
             }
             .btn-user-menu:hover {
-                color: #d8213d;
-                border: 1px solid #d8213d;
+                color: var(--color-red);
+                border: 1px solid var(--color-red);
                 .user-menu {
                     display: block;
                 }
@@ -171,12 +171,12 @@
 
 .site-btn {
     font-size: 14px;
-    color: #f03250;
+    color: var(--color-red);
     font-weight: 700;
     text-transform: uppercase;
     display: inline-block;
     padding: 13px 30px 12px;
-    background: #f03250;
+    background: var(--color-red);
     border: none;
 }
 
@@ -223,7 +223,7 @@
         background: transparent;
         padding: 0;
         display: block;
-        background: #222;
+        background: var(--color-dark);
         ul {
             margin: 5px 0;
         }
@@ -235,12 +235,12 @@
         a:hover {
             border-radius: 0;
             background: transparent;
-            color: #f03250;
+            color: var(--color-red);
         }
         .slicknav_row:hover {
             border-radius: 0;
             background: transparent;
-            color: #f03250;
+            color: var(--color-red);
         }
     }
     .header-menu-right {
@@ -249,7 +249,7 @@
     .slicknav_btn {
         margin: 0;
         border-radius: 0;
-        background: #f03250;
+        background: var(--color-red);
         position: absolute;
         right: 15px;
         top: 40px;

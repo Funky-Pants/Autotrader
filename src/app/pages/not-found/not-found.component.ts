@@ -11,7 +11,7 @@ export class NotFoundComponent implements OnInit {
   constructor(private titleService: Title) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle('Начало - Auto trader')
+    this.titleService.setTitle('Error - Auto trader')
   }
 
 }

@@ -1,0 +1,18 @@
+#login-container input {
+    text-align: center;
+}
+
+.update-button {
+    background: var(--color-red);
+    color: var(--color-white);
+    font-size: 12px;
+    width: 100%;
+}
+
+.update-button:hover {
+    background-color: var(--color-dark);
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}

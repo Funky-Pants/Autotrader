@@ -3,33 +3,31 @@
         <div class="row">
             <div class="col-lg-3 col-md-3">
                 <div class="header-logo">
-                    <a routerLink="/home" title="Auto trader"><img src="../../../assets/img/logo.png" alt="Logo" title="Auto trader"></a>
+                    <a routerLink="home" title="Auto trader"><img src="../../../assets/img/logo.png" alt="Logo" title="Auto trader"></a>
                 </div>
             </div>
             <div class="col-lg-9 col-md-9">
                 <div class="header-nav">
                     <nav class="header-menu mobile-menu">
                         <ul>
-                            <li><a routerLink="/home">Начало</a></li>
+                            <li><a routerLink="home">Начало</a></li>
                             <li><a href="">Търсачка</a></li>
-                            <li><a href="">Всички публикувани</a></li>
+                            <li><a routerLink="all-cars">Всички публикувани</a></li>
                         </ul>
                     </nav>
                     <div class="header-menu-right">
-                        <a href="" class="btn-sell"><i class="fa fa-plus"></i> Добави обява</a>
+                        <a routerLink="sell-your-car" class="btn-sell"><i class="fa fa-plus"></i> Добави обява</a>
                         <div class="btn-user-menu">
                             <i class="fa fa-user"></i>
                             <div class="user-menu">
-                                <!-- <ul>
-                                    <li><a href=""><i class="fa fa-user"></i> Моят профил</a></li>
-                                    <li><a href=""><i class="fa fa-car"></i> Моите обяви</a></li>
-                                    <li><a href=""><i class="fa fa-users"></i> Всички потребители</a></li>
-                                    <li><a href=""><i class="fa fa-user-plus"></i> Добави потребител</a></li>
-                                    <li><a href=""><i class="fa fa-sign-out-alt"></i> Изход</a></li>
-                                </ul> -->
                                 <ul>
-                                    <li><a href=""><i class="fa fa-sign-in"></i> Вход</a></li>
-                                    <li><a href=""><i class="fa fa-user-plus"></i> Регистрация</a></li>
+                                    <li><a routerLink="profile"><i class="fa fa-user"></i> Моят профил</a></li>
+                                    <li><a routerLink="my-cars-list"><i class="fa fa-car"></i> Моите обяви</a></li>
+                                    <li><a href="#" (click)="logoutHandler()"><i class="fa fa-sign-out-alt"></i> Изход</a></li>
+                                </ul>
+                                <ul>
+                                    <li><a routerLink="login"><i class="fa fa-sign-in"></i> Вход</a></li>
+                                    <li><a routerLink="register"><i class="fa fa-user-plus"></i> Регистрация</a></li>
                                 </ul>
                             </div>
                         </div>

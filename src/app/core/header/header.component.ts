@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IUser } from '../interfaces';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'autotrader-header',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(public userService: UserService) { }
+
+  get isLogged(): boolean {
+    return this.userService.isLogged;
+  }
+
+  get currentUser(): IUser {
+    return this.userService.currentUser;
+  }
 
   ngOnInit(): void {
+  }
+  
+  logoutHandler(): void {
+    this.userService.logout();
   }
 
 }

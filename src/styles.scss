@@ -3,6 +3,17 @@
     src: url('./assets/font/obelixpro/ObelixProIt-cyr.ttf');
 }
 
+:root {
+    --color-red: #f03250;
+    --color-dark: #1a191e;
+    --color-black: #000000;
+    --color-white: #ffffff;
+    --color-dark-grey: #424141;
+    --color-light-grey: #ccc;
+    --color-link: #007bff;
+    --color-yellow: #ffd000;
+}
+
 html,
 body {
     height: 100%;
@@ -18,21 +29,21 @@ body {
 /* Track */
 
 ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px #1a191e;
+    box-shadow: inset 0 0 5px var(--color-dark);
     border-radius: 10px;
 }
 
 ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
-    background: #1a191e;
+    background: var(--color-dark);
 }
 
 
 /* Handle */
 
 ::-webkit-scrollbar-thumb {
-    background: #f03250;
+    background: var(--color-red);
     border-radius: 10px;
     transition: .3s;
 }
@@ -47,7 +58,7 @@ body {
 
 ::selection {
     background: rgba(240, 50, 78, 0.8);
-    color: #fff;
+    color: var(--color-white);
 }
 
 h1,
@@ -57,16 +68,20 @@ h4,
 h5,
 h6 {
     margin: 0;
-    color: #111111;
+    color: var(--color-dark);
     font-weight: 400;
     font-family: "ObelixPro", sans-serif;
     letter-spacing: 0.4px;
 }
 
+h1 {
+    font-size: 1.75rem;
+}
+
 p {
     font-size: 15px;
     font-family: "Cairo", sans-serif;
-    color: #424141;
+    color: var(--color-dark);
     font-weight: 400;
     line-height: 25px;
 }
@@ -87,7 +102,7 @@ a:hover,
 a:focus {
     text-decoration: none;
     outline: none;
-    color: #ffffff;
+    color: var(--color-white);
 }
 
 ul,
@@ -106,11 +121,11 @@ ol {
     text-align: center;
     h2 {
         font-weight: 700;
-        color: #323232;
+        color: var(--color-dark);
         margin-bottom: 10px;
     }
     p {
-        color: #424141;
+        color: var(--color-dark-grey);
     }
 }
 
@@ -137,7 +152,7 @@ ol {
 .text-white span,
 .text-white li,
 .text-white a {
-    color: #fff;
+    color: var(--color-white);
 }
 
 .fa-user-plus,
@@ -162,4 +177,17 @@ ol {
 
 .text-right {
     text-align: right;
+}
+
+.page-title {
+    background-color: var(--color-dark);
+    color: var(--color-white);
+}
+
+.bg-dark {
+    background-color: var(--color-dark);
+}
+
+.bg-dark hr {
+    border-top: 1px solid var(--color-white);
 }

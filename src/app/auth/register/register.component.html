@@ -1,0 +1,60 @@
+<div class="bg-dark spad">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h1 class="text-center text-white">Регистрация</h1>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="register-container" class="container spad">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <form id="register">
+                <div class="form-group row justify-content-center">
+                    <div class="col-sm-6">
+                        <input formControlName="email" [class.input-error]="registerFormGroup.controls['email'].touched && registerFormGroup.controls['email'].invalid" type="email" class="form-control" placeholder="Email">
+                    </div>
+                    <div class="col-sm-6">
+                        <input formControlName="userName" [class.input-error]="registerFormGroup.controls['userName'].touched && registerFormGroup.controls['userName'].invalid" type="text" class="form-control" placeholder="Потребителско име">
+                    </div>
+                </div>
+                <div class="form-group row justify-content-center">
+                    <div class="col-sm-6">
+                        <input formControlName="firstName" [class.input-error]="registerFormGroup.controls['lastName'].touched && registerFormGroup.controls['lastName'].invalid" type="text" class="form-control" placeholder="Собствено име">
+                    </div>
+                    <div class="col-sm-6">
+                        <input formControlName="lastName" [class.input-error]="registerFormGroup.controls['lastName'].touched && registerFormGroup.controls['lastName'].invalid" class="form-control" placeholder="Фамилно име">
+                    </div>
+                </div>
+                <div formGroupName="passwords" class="form-group row justify-content-center">
+                    <div class="col-sm-6">
+                        <input [class.input-error]="shouldShowErrorForControl('password', passwordsGroup)" formControlName="password" type="password" name="password" class="form-control" placeholder="Парола">
+                    </div>
+                    <div class="col-sm-6">
+                        <input formControlName="rePassword" type="password" class="form-control" placeholder="Повторете паролата">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        <input formControlName="phoneNumber" [class.input-error]="registerFormGroup.controls['phoneNumber'].touched && registerFormGroup.controls['phoneNumber'].invalid" type="number" class="form-control" placeholder="Телефонен номер">
+                    </div>
+                    <div class="col-sm-6">
+                        <input formControlName="city" [class.input-error]="registerFormGroup.controls['city'].touched && registerFormGroup.controls['city'].invalid" type="text" class="form-control" placeholder="Град">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <button [disabled]="registerFormGroup.invalid" type="submit" class="btn register-button p-2"><i class="fa fa-user-plus"></i> Регистрация</button>
+                    </div>
+                </div>
+            </form>
+            <div class="row create-acc-link">
+                <div class="col-sm-12 text-right">
+                    <a routerLink="/login">Вече имате акаунт? Впишете се от тук</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

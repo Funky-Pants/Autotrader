@@ -1,0 +1,83 @@
+<div class="bg-dark spad" data-aos="fade-down" data-aos-delay="400">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h1 class="text-center text-white">Моят профил</h1>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="profile-container" class="container spad">
+    <div class="row justify-content-center">
+        <div class="col-md-8" data-aos="fade-down" data-aos-delay="500">
+            <form id="profile" method="POST" action="profile" enctype="multipart/form-data" class="row">
+                <div class="col-md-4">
+                    <div class="form-group row justify-content-center profile-picture">
+                        <div class="col-sm-12 ">
+                            <img id="profile-img" src="../../../assets/img/no-picture.png" alt="Profile image">
+                        </div>
+                        <div class="col-sm-12 mt-1">
+                            <input type="file" name="image" class="input" accept="image">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <!-- <div class="form-group row">
+                        <div class="col-md-12 text-success">Image succefuly updated</div>
+                        <div class="col-md-12 text-success">First name succefuly updated</div>
+                        <div class="col-md-12 text-danger">Please fill the first name</div>
+                        <div class="col-md-12 text-success">Last name succefuly updated</div>
+                        <div class="col-md-12 text-danger">Please fill the last name</div>
+                        <div class="col-md-12 text-success">City succefuly updated</div>
+                        <div class="col-md-12 text-danger">Please fill the first name</div>
+                        <div class="col-md-12 text-success">Phone succefuly updated</div>
+                        <div class="col-md-12 text-danger">Please fill the phone number</div>
+                        <div class="col-md-12 text-success">Password succefuly updated</div>
+                        <div class="col-md-12 text-danger">Passwords doesnt mach</div>
+                        <div class="col-md-12 text-danger">Please input the correct password</div>
+                    </div> -->
+                    <div class="form-group row">
+                        <label class="col-form-label" for="ProfileEmail">E-mail</label>
+                        <input type="email" class="form-control" id="ProfileEmail" value="Email" disabled>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label" for="ProfileUserName">Потребителско име</label>
+                        <input type="username" class="form-control" id="ProfileUserName" value="User name" disabled>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label" for="ProfileFirstName">Първо име</label>
+                        <input type="text" name="first_name" class="form-control" id="ProfileFirstName" value="First name">
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label" for="ProfileLastName">Фамилно име</label>
+                        <input type="text" name="last_name" class="form-control" id="ProfileLastName" value="Last name">
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label" for="ProfileLastName">Град</label>
+                        <input type="text" name="region" class="form-control" id="ProfileRegion" value="City">
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label" for="PhoneNumber">Телефонен номер</label>
+                        <input type="text" name="phone_number" class="form-control" id="PhoneNumber" value="Phone number">
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label" for="CurrentPassword">Парола</label>
+                        <input type="password" name="current_password" class="form-control" id="CurrentPassword" placeholder="Парола">
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label" for="NewPassword">Нова парора</label>
+                        <input type="password" name="new_password" class="form-control" id="NewPassword" placeholder="Нова парора">
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label" for="RepeatNewPassword">Повтори новата парола</label>
+                        <input type="password" name="repeat_new_password" class="form-control" id="RepeatNewPassword" placeholder="Повтори новата парола">
+                    </div>
+                    <div class="form-group row">
+                        <button type="submit" name="update" class="btn update-button p-2"><i class="fas fa-user-edit"></i> Обнови профила</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

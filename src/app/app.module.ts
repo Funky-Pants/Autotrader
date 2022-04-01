@@ -5,31 +5,33 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from "./core/core.module";
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
-import { HomeComponent } from './pages/home/home.component';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { AuthModule } from './auth/auth.module';
+import { PagesModule } from './pages/pages.modul';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NotFoundComponent,
-    HomeComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    CoreModule.forRoot(),
-    CoreModule,
+    HttpClientModule,
     RouterModule,
+    CoreModule.forRoot(),
+    AppRoutingModule,
     BrowserAnimationsModule,
+    PagesModule,
+    AuthModule,
   ],
   providers: [],
   bootstrap: [
     AppComponent,
     HeaderComponent,
-    FooterComponent,]
+    FooterComponent
+  ]
 })
 export class AppModule { }

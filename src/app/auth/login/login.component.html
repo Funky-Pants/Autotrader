@@ -1,0 +1,39 @@
+<div class="bg-dark spad">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h1 class="text-center text-white">Вход</h1>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="login-container" class="container spad">
+    <!-- <div class="row-cols-1"><p class="text-warning">Invalid username or password!</p></div> -->
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <form id="login" action="login" method="post">
+                <div class="form-group row justify-content-center">
+                    <div class="col-sm-12">
+                        <input formControlName="email" type="email" class="form-control" placeholder="E-mail">
+                    </div>
+                </div>
+                <div class="form-group row justify-content-center">
+                    <div class="col-sm-12">
+                        <input formControlName="password" type="password" class="form-control" id="inputPassword" placeholder="Парола">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <button class="btn login-button p-2"><i class="fas fa-sign-in-alt"></i> Влез</button>
+                    </div>
+                </div>
+            </form>
+            <div class="row create-acc-link">
+                <div class="col-sm-12 text-right">
+                    <a routerLink="/register">Нямате регистрация? Направете си една тук</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
