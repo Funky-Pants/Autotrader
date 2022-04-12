@@ -54,8 +54,7 @@
             font-size: 12px;
             width: 100%;
         }
-        .listing-item-button:hover,
-        .edit-button:hover {
+        .listing-item-button:hover {
             background: var(--color-dark);
         }
         .delete-button:hover {
@@ -63,12 +62,6 @@
         }
         .delete-button {
             background: var(--color-dark);
-            color: var(--color-white);
-            font-size: 12px;
-            width: 100%;
-        }
-        .edit-button {
-            background: var(--color-yellow);
             color: var(--color-white);
             font-size: 12px;
             width: 100%;

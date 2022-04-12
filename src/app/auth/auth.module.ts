@@ -16,7 +16,6 @@ import { CoreModule } from '../core/core.module';
     LoginComponent,
     ProfileComponent,
     MyCarsListComponent,
-    //EmailValidatorDirective,
   ],
   imports: [
     CommonModule,

@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
     this.titleService.setTitle('Регистрация - Auto trader')
   }
 
-  passwordControl = new FormControl(null, [Validators.required, Validators.minLength(5)]);
+  passwordControl = new FormControl(null, [Validators.required, Validators.minLength(6)]);
 
   get passwordsGroup(): FormGroup {
     return this.registerFormGroup.controls['passwords'] as FormGroup;
@@ -32,11 +32,16 @@ export class RegisterComponent implements OnInit {
       'password': this.passwordControl,
       'rePassword': new FormControl(null, [passwordMatch(this.passwordControl)]),
     }),
-    'firstName': new FormControl(null, [Validators.required, Validators.minLength(6)]),
+    'firstName': new FormControl(null, [Validators.required, Validators.minLength(3)]),
     'lastName': new FormControl(null, [Validators.required, Validators.minLength(6)]),
     'phoneNumber': new FormControl(null, [Validators.required, Validators.minLength(6)]),
-    'city': new FormControl(null, [Validators.required]),
+    'city': new FormControl(null, [Validators.required, Validators.minLength(6)]),
   })
+
+  shouldShowErrorForControl(controlName: string, sourceGroup: FormGroup = this.registerFormGroup) {
+    return sourceGroup.controls[controlName].touched && sourceGroup.controls[controlName].invalid
+  }
+  
   handleRegister(): void {
     const { username, email, passwords, firstName, lastName, phoneNumber, city} = this.registerFormGroup.value;
   
@@ -53,10 +58,6 @@ export class RegisterComponent implements OnInit {
     this.userService.register$(body).subscribe(() => {
       this.router.navigate(['/profile']);
     })
-  }
-
-  shouldShowErrorForControl(controlName: string, sourceGroup: FormGroup = this.registerFormGroup) {
-    return sourceGroup.controls[controlName].touched && sourceGroup.controls[controlName].invalid
   }
 
 }

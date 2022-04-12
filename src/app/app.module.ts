@@ -12,10 +12,13 @@ import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { AuthModule } from './auth/auth.module';
 import { PagesModule } from './pages/pages.modul';
+import { UserService } from './core/user.service';
+import { CarDetailsComponent } from './pages/car-details/car-details.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CarDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +28,7 @@ import { PagesModule } from './pages/pages.modul';
     AppRoutingModule,
     BrowserAnimationsModule,
     PagesModule,
-    AuthModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [

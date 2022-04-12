@@ -8,7 +8,9 @@ import { IUser } from './interfaces';
 
 export interface CreateUserDto { username: string, email: string, password: string, firstName: string, lastName: string, phoneNumber: number, city: string  }
 
-@Injectable()
+export interface UpdateUserDto { password: string, firstName: string, lastName: string, phoneNumber: number, city: string  }
+
+@Injectable({ providedIn: 'root' })
 export class UserService {
 
   currentUser!: IUser;
@@ -20,19 +22,6 @@ export class UserService {
   constructor(/*private storage: StorageService,*/ private httpClient: HttpClient) {
     console.log('UserService#constructor')
   }
-
-  // login$(userData: { email: string, password: string }): Observable<IUser> {
-  //   return this.httpClient
-  //     .post<IUser>(`${environment.firebaseConfig}/login`, userData, { withCredentials: true, observe: 'response' })
-  //     .pipe(
-  //       tap(response => console.log(response)),
-  //       map(response => response.body),
-  //       tap(user => this.currentUser = user)
-  //     )
-  //     return this.http
-  //     .post<IUser>(`/auth/login`, data, { withCredentials: true })
-  //     .pipe(tap((user) => this.currentUser = user));
-  // }
 
   login$(data: { email: string; password: string }): Observable<IUser> {
     return this.httpClient.post<IUser>(`${environment.firebaseConfig}/login`, data, { withCredentials: true })
@@ -49,6 +38,9 @@ export class UserService {
 
   register$(userData: CreateUserDto): Observable<IUser> {
     return this.httpClient.post<IUser>(`${environment.firebaseConfig}/register`, userData, { withCredentials: true })
+  }
+  updateprofile$(userData: UpdateUserDto): Observable<IUser> {
+    return this.httpClient.post<IUser>(`${environment.firebaseConfig}/updateprofile`, userData, { withCredentials: true })
   }
 }
 

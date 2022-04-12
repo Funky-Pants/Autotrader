@@ -1,0 +1,30 @@
+#car-details-container {
+    img {
+        border-radius: 5px;
+    }
+    span p {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        margin: 0 10px;
+        display: block;
+    }
+    ul {
+        li {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+        }
+    }
+    h6 {
+        font-style: italic;
+        color: var(--color-red);
+    }
+    .delete-button {
+        background: var(--color-dark);
+        color: var(--color-white);
+        font-size: 12px;
+        width: 100%;
+    }
+    .delete-button:hover {
+        background: var(--color-black);
+    }
+}

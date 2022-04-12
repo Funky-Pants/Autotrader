@@ -2,29 +2,39 @@
     text-align: center;
 }
 
-.register-button {
-    background: var(--color-red);
-    color: var(--color-white);
-    font-size: 12px;
-    width: 100%;
-}
-
-.register-button:hover {
-    background-color: var(--color-dark);
-}
-
 .form-group {
+    .register-button {
+        background: var(--color-red);
+        color: var(--color-white);
+        font-size: 12px;
+        width: 100%;
+    }
+    .register-button:hover {
+        background-color: var(--color-dark);
+    }
     margin-bottom: 1rem;
+    .error {
+        color: rgb(221, 0, 0);
+        text-align: center;
+        margin-top: 10px;
+        font-weight: bold;
+    }
+    .input-error {
+        border: 1px solid rgb(221, 0, 0);
+        -webkit-box-shadow: 0px 0px 13px 1px rgba(221, 0, 0, 0.4);
+        box-shadow: 0px 0px 13px 1px rgba(221, 0, 0, 0.4);
+    }
 }
 
-.create-acc-link a {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 10px;
-    font-style: italic;
-    color: var(--color-link);
-}
-
-.create-acc-link a:hover {
-    text-decoration: underline;
-    color: var(--color-link);
+.create-acc-link {
+    a {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 10px;
+        font-style: italic;
+        color: var(--color-link);
+    }
+    a:hover {
+        text-decoration: underline;
+        color: var(--color-link);
+    }
 }

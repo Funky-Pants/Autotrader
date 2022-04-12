@@ -11,7 +11,7 @@
 <div id="profile-container" class="container spad">
     <div class="row justify-content-center">
         <div class="col-md-8" data-aos="fade-down" data-aos-delay="500">
-            <form id="profile" method="POST" action="profile" enctype="multipart/form-data" class="row">
+            <form [formGroup]="profileFormGroup" class="row">
                 <div class="col-md-4">
                     <div class="form-group row justify-content-center profile-picture">
                         <div class="col-sm-12 ">
@@ -39,42 +39,92 @@
                     </div> -->
                     <div class="form-group row">
                         <label class="col-form-label" for="ProfileEmail">E-mail</label>
-                        <input type="email" class="form-control" id="ProfileEmail" value="Email" disabled>
+                        <input type="email" class="form-control" id="ProfileEmail" value="example@email.com" disabled="true">
                     </div>
                     <div class="form-group row">
                         <label class="col-form-label" for="ProfileUserName">Потребителско име</label>
-                        <input type="username" class="form-control" id="ProfileUserName" value="User name" disabled>
+                        <input type="text" class="form-control" id="ProfileUserName" value="username" disabled="true">
                     </div>
                     <div class="form-group row">
                         <label class="col-form-label" for="ProfileFirstName">Първо име</label>
-                        <input type="text" name="first_name" class="form-control" id="ProfileFirstName" value="First name">
+                        <input formControlName="firstName" [class.input-error]="profileFormGroup.controls['firstName'].touched && profileFormGroup.controls['firstName'].invalid" type="text" class="form-control" value="Атанас">
+                        <ng-container *ngIf="profileFormGroup.controls['firstName'].touched && profileFormGroup.controls['firstName'].invalid">
+                            <p *ngIf="profileFormGroup.controls['firstName'].errors?.['required']" class="error">
+                                Полето "собстевно име" е задължително!
+                            </p>
+                            <p *ngIf="profileFormGroup.controls['firstName'].errors?.['minlength']" class="error">
+                                Името трябва да бъде поне 3 символа!
+                            </p>
+                        </ng-container>
                     </div>
                     <div class="form-group row">
                         <label class="col-form-label" for="ProfileLastName">Фамилно име</label>
-                        <input type="text" name="last_name" class="form-control" id="ProfileLastName" value="Last name">
+                        <input formControlName="lastName" [class.input-error]="profileFormGroup.controls['lastName'].touched && profileFormGroup.controls['lastName'].invalid" type="text" class="form-control" id="ProfileLastName" value="Павлов">
+                        <ng-container *ngIf="profileFormGroup.controls['lastName'].touched && profileFormGroup.controls['lastName'].invalid">
+                            <p *ngIf="profileFormGroup.controls['lastName'].errors?.['required']" class="error">
+                                Полето "фамилно име" е задължително!
+                            </p>
+                            <p *ngIf="profileFormGroup.controls['lastName'].errors?.['minlength']" class="error">
+                                Фамилното име трябва да бъде поне 6 символа!
+                            </p>
+                        </ng-container>
                     </div>
                     <div class="form-group row">
-                        <label class="col-form-label" for="ProfileLastName">Град</label>
-                        <input type="text" name="region" class="form-control" id="ProfileRegion" value="City">
+                        <label class="col-form-label" for="ProfileCity">Град</label>
+                        <input formControlName="city" [class.input-error]="profileFormGroup.controls['city'].touched && profileFormGroup.controls['city'].invalid" type="text" name="region" class="form-control" id="ProfileCity" value="Пловдив">
+                        <ng-container *ngIf="profileFormGroup.controls['city'].touched && profileFormGroup.controls['city'].invalid">
+                            <p *ngIf="profileFormGroup.controls['city'].errors?.['required']" class="error">
+                                Полето "град" е задължително!
+                            </p>
+                            <p *ngIf="profileFormGroup.controls['city'].errors?.['minlength']" class="error">
+                                Града трябва да бъде поне 6 символа!
+                            </p>
+                        </ng-container>
                     </div>
                     <div class="form-group row">
                         <label class="col-form-label" for="PhoneNumber">Телефонен номер</label>
-                        <input type="text" name="phone_number" class="form-control" id="PhoneNumber" value="Phone number">
+                        <input formControlName="phoneNumber" [class.input-error]="profileFormGroup.controls['phoneNumber'].touched && profileFormGroup.controls['phoneNumber'].invalid" type="number" class="form-control" id="PhoneNumber" value="123456789">
+                        <ng-container *ngIf="profileFormGroup.controls['phoneNumber'].touched && profileFormGroup.controls['phoneNumber'].invalid">
+                            <p *ngIf="profileFormGroup.controls['phoneNumber'].errors?.['required']" class="error">
+                                Полето "телефон" е задължително!
+                            </p>
+                            <p *ngIf="profileFormGroup.controls['phoneNumber'].errors?.['minlength']" class="error">
+                                Телефона трябва да бъде поне 6 символа!
+                            </p>
+                        </ng-container>
                     </div>
                     <div class="form-group row">
-                        <label class="col-form-label" for="CurrentPassword">Парола</label>
-                        <input type="password" name="current_password" class="form-control" id="CurrentPassword" placeholder="Парола">
+                        <label class="col-form-label" for="currentPassword">Парола</label>
+                        <input formControlName="currentPassword" [class.input-error]="profileFormGroup.controls['currentPassword'].touched && profileFormGroup.controls['currentPassword'].invalid" type="password" class="form-control" id="currentPassword" placeholder="Парола">
+                        <ng-container *ngIf="profileFormGroup.controls['currentPassword'].touched && profileFormGroup.controls['currentPassword'].invalid">
+                            <p *ngIf="profileFormGroup.controls['currentPassword'].errors?.['required']" class="error">
+                                Полето "парола" е задължително!
+                            </p>
+                            <p *ngIf="profileFormGroup.controls['currentPassword'].errors?.['minlength']" class="error">
+                                Паролата трябва да бъде поне 6 символа!
+                            </p>
+                        </ng-container>
                     </div>
                     <div class="form-group row">
                         <label class="col-form-label" for="NewPassword">Нова парора</label>
-                        <input type="password" name="new_password" class="form-control" id="NewPassword" placeholder="Нова парора">
+                        <input formControlName="newPassword" [class.input-error]="shouldShowErrorForControl('newPassword', passwordsGroup)" type="password" class="form-control" id="NewPassword" placeholder="Нова парола">
+                        <ng-container *ngIf="shouldShowErrorForControl('newPassword', passwordsGroup)">
+                            <p *ngIf="passwordsGroup.controls['newPassword'].errors?.['minlength']" class="error">
+                                Паролата трябва да бъде поне 6 символа!
+                            </p>
+                        </ng-container>
                     </div>
                     <div class="form-group row">
                         <label class="col-form-label" for="RepeatNewPassword">Повтори новата парола</label>
-                        <input type="password" name="repeat_new_password" class="form-control" id="RepeatNewPassword" placeholder="Повтори новата парола">
+                        <input formControlName="rePassword" [class.input-error]="shouldShowErrorForControl('rePassword', passwordsGroup)" type="password" class="form-control" id="RepeatNewPassword" placeholder="Повтори новата парола">
+                        <ng-container *ngIf="shouldShowErrorForControl('rePassword', passwordsGroup)">
+                            <p *ngIf="passwordsGroup.controls['rePassword'].errors?.['passwordMissmatch']" class="error">
+                                Паролите не въспадат!
+                            </p>
+                        </ng-container>
                     </div>
                     <div class="form-group row">
-                        <button type="submit" name="update" class="btn update-button p-2"><i class="fas fa-user-edit"></i> Обнови профила</button>
+                        <button [disabled]="profileFormGroup.invalid" type="submit" name="update" class="btn update-button p-2"><i class="fa fa-edit"></i> Обнови профила</button>
                     </div>
                 </div>
             </form>

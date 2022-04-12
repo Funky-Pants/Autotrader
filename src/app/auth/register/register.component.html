@@ -11,37 +11,101 @@
 <div id="register-container" class="container spad">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <form id="register">
+            <form [formGroup]="registerFormGroup" (ngSubmit)="handleRegister()">
                 <div class="form-group row justify-content-center">
                     <div class="col-sm-6">
-                        <input formControlName="email" [class.input-error]="registerFormGroup.controls['email'].touched && registerFormGroup.controls['email'].invalid" type="email" class="form-control" placeholder="Email">
+                        <input formControlName="email" [class.input-error]="registerFormGroup.controls['email'].touched && registerFormGroup.controls['email'].invalid" type="email" class="form-control" placeholder="E-mail">
+                        <ng-container *ngIf="registerFormGroup.controls['email'].touched && registerFormGroup.controls['email'].invalid">
+                            <p *ngIf="registerFormGroup.controls['email'].errors?.['required']" class="error">
+                                Полето "e-mail" е задължително!
+                            </p>
+                            <p *ngIf="registerFormGroup.controls['email'].errors?.['email']" class="error">
+                                E-mail адреса не е валиден!
+                            </p>
+                        </ng-container>
                     </div>
                     <div class="col-sm-6">
                         <input formControlName="userName" [class.input-error]="registerFormGroup.controls['userName'].touched && registerFormGroup.controls['userName'].invalid" type="text" class="form-control" placeholder="Потребителско име">
+                        <ng-container *ngIf="registerFormGroup.controls['userName'].touched && registerFormGroup.controls['userName'].invalid">
+                            <p *ngIf="registerFormGroup.controls['userName'].errors?.['required']" class="error">
+                                Полето "потребителско име" е задължително!
+                            </p>
+                            <p *ngIf="registerFormGroup.controls['userName'].errors?.['minlength']" class="error">
+                                Username трябва да бъде поне 6 символа!
+                            </p>
+                        </ng-container>
                     </div>
                 </div>
                 <div class="form-group row justify-content-center">
                     <div class="col-sm-6">
-                        <input formControlName="firstName" [class.input-error]="registerFormGroup.controls['lastName'].touched && registerFormGroup.controls['lastName'].invalid" type="text" class="form-control" placeholder="Собствено име">
+                        <input formControlName="firstName" [class.input-error]="registerFormGroup.controls['firstName'].touched && registerFormGroup.controls['firstName'].invalid" type="text" class="form-control" placeholder="Собствено име">
+                        <ng-container *ngIf="registerFormGroup.controls['firstName'].touched && registerFormGroup.controls['firstName'].invalid">
+                            <p *ngIf="registerFormGroup.controls['firstName'].errors?.['required']" class="error">
+                                Полето "собстевно име" е задължително!
+                            </p>
+                            <p *ngIf="registerFormGroup.controls['firstName'].errors?.['minlength']" class="error">
+                                Името трябва да бъде поне 3 символа!
+                            </p>
+                        </ng-container>
                     </div>
                     <div class="col-sm-6">
                         <input formControlName="lastName" [class.input-error]="registerFormGroup.controls['lastName'].touched && registerFormGroup.controls['lastName'].invalid" class="form-control" placeholder="Фамилно име">
+                        <ng-container *ngIf="registerFormGroup.controls['lastName'].touched && registerFormGroup.controls['lastName'].invalid">
+                            <p *ngIf="registerFormGroup.controls['lastName'].errors?.['required']" class="error">
+                                Полето "фамилно име" е задължително!
+                            </p>
+                            <p *ngIf="registerFormGroup.controls['lastName'].errors?.['minlength']" class="error">
+                                Фамилното име трябва да бъде поне 6 символа!
+                            </p>
+                        </ng-container>
                     </div>
                 </div>
                 <div formGroupName="passwords" class="form-group row justify-content-center">
                     <div class="col-sm-6">
-                        <input [class.input-error]="shouldShowErrorForControl('password', passwordsGroup)" formControlName="password" type="password" name="password" class="form-control" placeholder="Парола">
+                        <input formControlName="password" [class.input-error]="shouldShowErrorForControl('password', passwordsGroup)" type="password" name="password" class="form-control" placeholder="Парола">
+                        <ng-container *ngIf="shouldShowErrorForControl('password', passwordsGroup)">
+                            <p *ngIf="passwordsGroup.controls['password'].errors?.['required']" class="error">
+                                Полето "парола" е задължително!
+                            </p>
+                            <p *ngIf="passwordsGroup.controls['password'].errors?.['minlength']" class="error">
+                                Паролата трябва да бъде поне 6 символа!
+                            </p>
+                        </ng-container>
                     </div>
                     <div class="col-sm-6">
-                        <input formControlName="rePassword" type="password" class="form-control" placeholder="Повторете паролата">
+                        <input formControlName="rePassword" [class.input-error]="shouldShowErrorForControl('rePassword', passwordsGroup)" type="password" class="form-control" placeholder="Повторете паролата">
+                        <ng-container *ngIf="shouldShowErrorForControl('rePassword', passwordsGroup)">
+                            <p *ngIf="passwordsGroup.controls['rePassword'].errors?.['required']" class="error">
+                                Полето "повторете парола" е задължително!
+                            </p>
+                            <p *ngIf="passwordsGroup.controls['rePassword'].errors?.['passwordMissmatch']" class="error">
+                                Паролите не въспадат!
+                            </p>
+                        </ng-container>
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-6">
                         <input formControlName="phoneNumber" [class.input-error]="registerFormGroup.controls['phoneNumber'].touched && registerFormGroup.controls['phoneNumber'].invalid" type="number" class="form-control" placeholder="Телефонен номер">
+                        <ng-container *ngIf="registerFormGroup.controls['phoneNumber'].touched && registerFormGroup.controls['phoneNumber'].invalid">
+                            <p *ngIf="registerFormGroup.controls['phoneNumber'].errors?.['required']" class="error">
+                                Полето "телефон" е задължително!
+                            </p>
+                            <p *ngIf="registerFormGroup.controls['phoneNumber'].errors?.['minlength']" class="error">
+                                Телефона трябва да бъде поне 6 символа!
+                            </p>
+                        </ng-container>
                     </div>
                     <div class="col-sm-6">
                         <input formControlName="city" [class.input-error]="registerFormGroup.controls['city'].touched && registerFormGroup.controls['city'].invalid" type="text" class="form-control" placeholder="Град">
+                        <ng-container *ngIf="registerFormGroup.controls['city'].touched && registerFormGroup.controls['city'].invalid">
+                            <p *ngIf="registerFormGroup.controls['city'].errors?.['required']" class="error">
+                                Полето "град" е задължително!
+                            </p>
+                            <p *ngIf="registerFormGroup.controls['city'].errors?.['minlength']" class="error">
+                                Града трябва да бъде поне 6 символа!
+                            </p>
+                        </ng-container>
                     </div>
                 </div>
                 <div class="form-group row">
