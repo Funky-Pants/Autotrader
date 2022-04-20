@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
   constructor(public userService: UserService) { }
 
   get isLogged(): boolean {
-    return this.userService.isLogged;
+    return this.userService.isLoggedIn;
   }
 
   get currentUser(): IUser {
@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
   }
   
   logoutHandler(): void {
-    this.userService.logout();
+    this.userService.LogOut();
   }
 
 }

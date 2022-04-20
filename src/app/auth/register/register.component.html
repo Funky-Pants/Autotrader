@@ -25,37 +25,13 @@
                         </ng-container>
                     </div>
                     <div class="col-sm-6">
-                        <input formControlName="userName" [class.input-error]="registerFormGroup.controls['userName'].touched && registerFormGroup.controls['userName'].invalid" type="text" class="form-control" placeholder="Потребителско име">
-                        <ng-container *ngIf="registerFormGroup.controls['userName'].touched && registerFormGroup.controls['userName'].invalid">
-                            <p *ngIf="registerFormGroup.controls['userName'].errors?.['required']" class="error">
+                        <input formControlName="username" [class.input-error]="registerFormGroup.controls['username'].touched && registerFormGroup.controls['username'].invalid" type="text" class="form-control" placeholder="Потребителско име">
+                        <ng-container *ngIf="registerFormGroup.controls['username'].touched && registerFormGroup.controls['username'].invalid">
+                            <p *ngIf="registerFormGroup.controls['username'].errors?.['required']" class="error">
                                 Полето "потребителско име" е задължително!
                             </p>
-                            <p *ngIf="registerFormGroup.controls['userName'].errors?.['minlength']" class="error">
+                            <p *ngIf="registerFormGroup.controls['username'].errors?.['minlength']" class="error">
                                 Username трябва да бъде поне 6 символа!
-                            </p>
-                        </ng-container>
-                    </div>
-                </div>
-                <div class="form-group row justify-content-center">
-                    <div class="col-sm-6">
-                        <input formControlName="firstName" [class.input-error]="registerFormGroup.controls['firstName'].touched && registerFormGroup.controls['firstName'].invalid" type="text" class="form-control" placeholder="Собствено име">
-                        <ng-container *ngIf="registerFormGroup.controls['firstName'].touched && registerFormGroup.controls['firstName'].invalid">
-                            <p *ngIf="registerFormGroup.controls['firstName'].errors?.['required']" class="error">
-                                Полето "собстевно име" е задължително!
-                            </p>
-                            <p *ngIf="registerFormGroup.controls['firstName'].errors?.['minlength']" class="error">
-                                Името трябва да бъде поне 3 символа!
-                            </p>
-                        </ng-container>
-                    </div>
-                    <div class="col-sm-6">
-                        <input formControlName="lastName" [class.input-error]="registerFormGroup.controls['lastName'].touched && registerFormGroup.controls['lastName'].invalid" class="form-control" placeholder="Фамилно име">
-                        <ng-container *ngIf="registerFormGroup.controls['lastName'].touched && registerFormGroup.controls['lastName'].invalid">
-                            <p *ngIf="registerFormGroup.controls['lastName'].errors?.['required']" class="error">
-                                Полето "фамилно име" е задължително!
-                            </p>
-                            <p *ngIf="registerFormGroup.controls['lastName'].errors?.['minlength']" class="error">
-                                Фамилното име трябва да бъде поне 6 символа!
                             </p>
                         </ng-container>
                     </div>
@@ -103,7 +79,7 @@
                                 Полето "град" е задължително!
                             </p>
                             <p *ngIf="registerFormGroup.controls['city'].errors?.['minlength']" class="error">
-                                Града трябва да бъде поне 6 символа!
+                                Градът трябва да бъде поне 3 символа!
                             </p>
                         </ng-container>
                     </div>

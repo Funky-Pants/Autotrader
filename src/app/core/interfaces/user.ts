@@ -1,11 +1,9 @@
-import { IBase } from './base';
-
-export interface IUser extends IBase {
+export interface IUser {
+  uid: string;
   email: string;
   username: string;
-  password: string;
-  firstName: string;
-  lastname: string;
+  photoURL: string;
   phoneNumber: number;
   city: string;
+  emailVerified: boolean;
 }

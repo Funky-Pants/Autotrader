@@ -12,8 +12,16 @@ import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { AuthModule } from './auth/auth.module';
 import { PagesModule } from './pages/pages.modul';
-import { UserService } from './core/user.service';
 import { CarDetailsComponent } from './pages/car-details/car-details.component';
+
+//Firabase setup
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { environment } from '../environments/environment';
+import { UserService } from './core/user.service';
 
 @NgModule({
   declarations: [
@@ -28,9 +36,14 @@ import { CarDetailsComponent } from './pages/car-details/car-details.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     PagesModule,
-    AuthModule
+    AuthModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [
     AppComponent,
     HeaderComponent,

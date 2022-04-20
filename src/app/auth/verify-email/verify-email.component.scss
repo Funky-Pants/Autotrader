@@ -1,0 +1,15 @@
+.form-group {
+    h2 {
+        font-size: 16px;
+    }
+    margin-bottom: 1rem;
+    .resent-button {
+        background: var(--color-red);
+        color: var(--color-white);
+        font-size: 12px;
+        width: 100%;
+    }
+    .resent-button:hover {
+        background-color: var(--color-dark);
+    }
+}

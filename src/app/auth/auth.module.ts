@@ -7,6 +7,8 @@ import { AuthRoutingModule } from './auth-routing-module';
 import { ProfileComponent } from './profile/profile.component';
 import { MyCarsListComponent } from './my-cars-list/my-cars-list.component';
 import { CoreModule } from '../core/core.module';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
 
@@ -16,6 +18,8 @@ import { CoreModule } from '../core/core.module';
     LoginComponent,
     ProfileComponent,
     MyCarsListComponent,
+    VerifyEmailComponent,
+    ForgotPasswordComponent,
   ],
   imports: [
     CommonModule,

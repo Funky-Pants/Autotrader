@@ -1,0 +1,32 @@
+<div class="bg-dark spad">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h1 class="text-center text-white">Потвърждение на email адрес</h1>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="verification-container" class="container spad">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <form (ngSubmit)="sentVerificationMail()">
+                <div class="form-group row justify-content-center">
+                    <h2 class="text-center">Регистрацията успешна</h2>
+                </div>
+                <div class="form-group row justify-content-center">
+                    <div class="col-md-12" *ngIf="userService.currentUser as user">
+                        <p class="text-center">Email за потвърждение беше изпратен до <strong>{{user.email}}</strong>.</p>
+                        <p class="text-center">Моля, проверете email си и кликнете върху връзката, за да потвърдите имейл адреса си. Моля проверете и спам папката</p>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn resent-button p-2"><i class="fa fa-paper-plane"></i> Изпрати нов email за потвърждение</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

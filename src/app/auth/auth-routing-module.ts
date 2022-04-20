@@ -5,6 +5,8 @@ import { RegisterComponent } from "./register/register.component";
 import { SellYourCarComponent } from "./sell-your-car/sell-your-car.component";
 import { ProfileComponent } from "./profile/profile.component";
 import { MyCarsListComponent } from "./my-cars-list/my-cars-list.component";
+import { VerifyEmailComponent } from "./verify-email/verify-email.component";
+import { ForgotPasswordComponent } from "./forgot-password/forgot-password.component";
 
 const routes: Routes = [
     { 
@@ -17,7 +19,7 @@ const routes: Routes = [
     },
     {
         path: 'profile',
-        // canActivate: [AuthGuard],
+        canActivate: [AuthGuard],
         component: ProfileComponent,
     },
     { 
@@ -29,6 +31,14 @@ const routes: Routes = [
       path: 'my-cars-list',
       //canActivate: [AuthGuard],
       component: MyCarsListComponent 
+    },
+    { 
+      path: 'email-verification',
+      component: VerifyEmailComponent 
+    },
+    { 
+      path: 'forgot-password',
+      component: ForgotPasswordComponent 
     },
 ]
 

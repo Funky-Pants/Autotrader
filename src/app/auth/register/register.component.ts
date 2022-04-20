@@ -1,4 +1,3 @@
-import { createInjectorType } from '@angular/compiler/src/render3/r3_injector_compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
@@ -26,16 +25,14 @@ export class RegisterComponent implements OnInit {
   }
 
   registerFormGroup: FormGroup = this.formBuilder.group({
-    'userName': new FormControl(null, [Validators.required, Validators.minLength(6)]),
+    'username': new FormControl(null, [Validators.required, Validators.minLength(6)]),
     'email': new FormControl(null, [Validators.required, emailValidator]),
     'passwords': new FormGroup({
       'password': this.passwordControl,
       'rePassword': new FormControl(null, [passwordMatch(this.passwordControl)]),
     }),
-    'firstName': new FormControl(null, [Validators.required, Validators.minLength(3)]),
-    'lastName': new FormControl(null, [Validators.required, Validators.minLength(6)]),
     'phoneNumber': new FormControl(null, [Validators.required, Validators.minLength(6)]),
-    'city': new FormControl(null, [Validators.required, Validators.minLength(6)]),
+    'city': new FormControl(null, [Validators.required, Validators.minLength(3)]),
   })
 
   shouldShowErrorForControl(controlName: string, sourceGroup: FormGroup = this.registerFormGroup) {
@@ -43,21 +40,20 @@ export class RegisterComponent implements OnInit {
   }
   
   handleRegister(): void {
-    const { username, email, passwords, firstName, lastName, phoneNumber, city} = this.registerFormGroup.value;
+    const { username, email, passwords, photoURL, phoneNumber, city} = this.registerFormGroup.value;
   
     const body: CreateUserDto = {
+      uid: '',
       username: username,
       email: email,
       password: passwords.password,
-      firstName: firstName,
-      lastName: lastName,
+      photoURL: 'photoURL',
       phoneNumber: phoneNumber,
+      emailVerified: false,
       city: city,
     }
   
-    this.userService.register$(body).subscribe(() => {
-      this.router.navigate(['/profile']);
-    })
+    this.userService.SignUp(body)
   }
 
 }

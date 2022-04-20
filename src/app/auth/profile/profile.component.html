@@ -11,7 +11,7 @@
 <div id="profile-container" class="container spad">
     <div class="row justify-content-center">
         <div class="col-md-8" data-aos="fade-down" data-aos-delay="500">
-            <form [formGroup]="profileFormGroup" class="row">
+            <form [formGroup]="profileFormGroup" class="row" *ngIf="currentUser as user">
                 <div class="col-md-4">
                     <div class="form-group row justify-content-center profile-picture">
                         <div class="col-sm-12 ">
@@ -23,72 +23,34 @@
                     </div>
                 </div>
                 <div class="col-md-8">
-                    <!-- <div class="form-group row">
-                        <div class="col-md-12 text-success">Image succefuly updated</div>
-                        <div class="col-md-12 text-success">First name succefuly updated</div>
-                        <div class="col-md-12 text-danger">Please fill the first name</div>
-                        <div class="col-md-12 text-success">Last name succefuly updated</div>
-                        <div class="col-md-12 text-danger">Please fill the last name</div>
-                        <div class="col-md-12 text-success">City succefuly updated</div>
-                        <div class="col-md-12 text-danger">Please fill the first name</div>
-                        <div class="col-md-12 text-success">Phone succefuly updated</div>
-                        <div class="col-md-12 text-danger">Please fill the phone number</div>
-                        <div class="col-md-12 text-success">Password succefuly updated</div>
-                        <div class="col-md-12 text-danger">Passwords doesnt mach</div>
-                        <div class="col-md-12 text-danger">Please input the correct password</div>
-                    </div> -->
                     <div class="form-group row">
                         <label class="col-form-label" for="ProfileEmail">E-mail</label>
-                        <input type="email" class="form-control" id="ProfileEmail" value="example@email.com" disabled="true">
+                        <input type="email" class="form-control" id="ProfileEmail" value="{{user.email}}" [disabled]="true">
                     </div>
                     <div class="form-group row">
                         <label class="col-form-label" for="ProfileUserName">Потребителско име</label>
-                        <input type="text" class="form-control" id="ProfileUserName" value="username" disabled="true">
+                        <input type="text" class="form-control" id="ProfileUserName" value="{{users.username}}" [disabled]="true">
                     </div>
                     <div class="form-group row">
-                        <label class="col-form-label" for="ProfileFirstName">Първо име</label>
-                        <input formControlName="firstName" [class.input-error]="profileFormGroup.controls['firstName'].touched && profileFormGroup.controls['firstName'].invalid" type="text" class="form-control" value="Атанас">
-                        <ng-container *ngIf="profileFormGroup.controls['firstName'].touched && profileFormGroup.controls['firstName'].invalid">
-                            <p *ngIf="profileFormGroup.controls['firstName'].errors?.['required']" class="error">
-                                Полето "собстевно име" е задължително!
-                            </p>
-                            <p *ngIf="profileFormGroup.controls['firstName'].errors?.['minlength']" class="error">
-                                Името трябва да бъде поне 3 символа!
-                            </p>
-                        </ng-container>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-form-label" for="ProfileLastName">Фамилно име</label>
-                        <input formControlName="lastName" [class.input-error]="profileFormGroup.controls['lastName'].touched && profileFormGroup.controls['lastName'].invalid" type="text" class="form-control" id="ProfileLastName" value="Павлов">
-                        <ng-container *ngIf="profileFormGroup.controls['lastName'].touched && profileFormGroup.controls['lastName'].invalid">
-                            <p *ngIf="profileFormGroup.controls['lastName'].errors?.['required']" class="error">
-                                Полето "фамилно име" е задължително!
-                            </p>
-                            <p *ngIf="profileFormGroup.controls['lastName'].errors?.['minlength']" class="error">
-                                Фамилното име трябва да бъде поне 6 символа!
-                            </p>
-                        </ng-container>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-form-label" for="ProfileCity">Град</label>
-                        <input formControlName="city" [class.input-error]="profileFormGroup.controls['city'].touched && profileFormGroup.controls['city'].invalid" type="text" name="region" class="form-control" id="ProfileCity" value="Пловдив">
-                        <ng-container *ngIf="profileFormGroup.controls['city'].touched && profileFormGroup.controls['city'].invalid">
-                            <p *ngIf="profileFormGroup.controls['city'].errors?.['required']" class="error">
-                                Полето "град" е задължително!
-                            </p>
-                            <p *ngIf="profileFormGroup.controls['city'].errors?.['minlength']" class="error">
-                                Града трябва да бъде поне 6 символа!
-                            </p>
-                        </ng-container>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-form-label" for="PhoneNumber">Телефонен номер</label>
-                        <input formControlName="phoneNumber" [class.input-error]="profileFormGroup.controls['phoneNumber'].touched && profileFormGroup.controls['phoneNumber'].invalid" type="number" class="form-control" id="PhoneNumber" value="123456789">
+                        <label class="col-form-label" for="PhoneNumber">Телефонен номер</label> {{user.uid}} {{user.emailVerified}}
+                        <input formControlName="phoneNumber" [class.input-error]="profileFormGroup.controls['phoneNumber'].touched && profileFormGroup.controls['phoneNumber'].invalid" type="number" class="form-control" id="PhoneNumber" value="{{user.phoneNumber}}">
                         <ng-container *ngIf="profileFormGroup.controls['phoneNumber'].touched && profileFormGroup.controls['phoneNumber'].invalid">
                             <p *ngIf="profileFormGroup.controls['phoneNumber'].errors?.['required']" class="error">
                                 Полето "телефон" е задължително!
                             </p>
                             <p *ngIf="profileFormGroup.controls['phoneNumber'].errors?.['minlength']" class="error">
+                                Телефона трябва да бъде поне 6 символа!
+                            </p>
+                        </ng-container>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label" for="City">Град</label>
+                        <input formControlName="city" [class.input-error]="profileFormGroup.controls['city'].touched && profileFormGroup.controls['city'].invalid" type="number" class="form-control" id="City" value="city">
+                        <ng-container *ngIf="profileFormGroup.controls['city'].touched && profileFormGroup.controls['city'].invalid">
+                            <p *ngIf="profileFormGroup.controls['city'].errors?.['required']" class="error">
+                                Полето "телефон" е задължително!
+                            </p>
+                            <p *ngIf="profileFormGroup.controls['city'].errors?.['minlength']" class="error">
                                 Телефона трябва да бъде поне 6 символа!
                             </p>
                         </ng-container>

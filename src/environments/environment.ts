@@ -10,13 +10,14 @@
 export const environment = {
   production: false,
   firebaseConfig: {
-      apiKey: "AIzaSyD5tFswVjWQmSRYbefPkt12O-LO_Ktn1Wc",    
-      authDomain: "auto-trader-softuni.firebaseapp.com",    
-      projectId: "auto-trader-softuni",    
-      storageBucket: "auto-trader-softuni.appspot.com",    
-      messagingSenderId: "649313389375",    
-      appId: "1:649313389375:web:c32ca1452a26f36a26a18a",    
-      measurementId: "G-YSK5RXR896"    
+    apiKey: "AIzaSyD5tFswVjWQmSRYbefPkt12O-LO_Ktn1Wc",
+    authDomain: "auto-trader-softuni.firebaseapp.com",
+    databaseURL: "https://auto-trader-softuni-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "auto-trader-softuni",
+    storageBucket: "auto-trader-softuni.appspot.com",
+    messagingSenderId: "649313389375",
+    appId: "1:649313389375:web:c32ca1452a26f36a26a18a",
+    measurementId: "G-YSK5RXR896"  
   }    
 }
 /*
