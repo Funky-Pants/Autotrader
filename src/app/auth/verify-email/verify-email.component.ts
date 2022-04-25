@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { UserService } from 'src/app/core/user.service';
+import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
   selector: 'autotrader-verify-email',

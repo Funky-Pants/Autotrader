@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { CreateUserDto, UserService } from 'src/app/core/user.service';
+import { CreateUserDto, UserService } from 'src/app/core/services/user.service';
 import { emailValidator, passwordMatch } from '../util';
 
 @Component({

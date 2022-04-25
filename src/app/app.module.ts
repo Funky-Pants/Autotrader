@@ -12,7 +12,6 @@ import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { AuthModule } from './auth/auth.module';
 import { PagesModule } from './pages/pages.modul';
-import { CarDetailsComponent } from './pages/car-details/car-details.component';
 
 //Firabase setup
 import { AngularFireModule } from '@angular/fire/compat';
@@ -21,12 +20,12 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from '../environments/environment';
-import { UserService } from './core/user.service';
+import { UserService } from './core/services/user.service';
+import { CarService } from './core/services/car.service';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    CarDetailsComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +42,7 @@ import { UserService } from './core/user.service';
     AngularFireStorageModule,
     AngularFireDatabaseModule,
   ],
-  providers: [UserService],
+  providers: [UserService, CarService],
   bootstrap: [
     AppComponent,
     HeaderComponent,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
-import { LoginUserDto, UserService } from 'src/app/core/user.service';
+import { LoginUserDto, UserService } from 'src/app/core/services/user.service';
 import { emailValidator } from '../util';
 
 @Component({

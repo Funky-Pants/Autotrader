@@ -4,7 +4,6 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { AsideComponent } from './aside/aside.component';
-import { UserService } from './user.service';
 
 
 @NgModule({

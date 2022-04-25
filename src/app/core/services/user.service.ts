@@ -1,10 +1,10 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable, NgZone } from '@angular/core';
-import { IUser } from './interfaces';
+import { IUser } from '../interfaces';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore, AngularFirestoreDocument, } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { getAuth } from 'firebase/auth';
+import { Observable } from 'rxjs';
 
 export interface CreateUserDto { uid: string, username: string, email: string, password: string, photoURL: string, phoneNumber: number, city: string, emailVerified: boolean }
 
@@ -25,29 +25,28 @@ export class UserService {
     return user !== null && user.emailVerified !== false ? true : false;
   }
 
-  constructor(/*private storage: StorageService,*/ 
-    private httpClient: HttpClient,
-    public afs: AngularFirestore, // Inject Firestore service
-    public afAuth: AngularFireAuth, // Inject Firebase auth service
+  constructor(
+    public db: AngularFirestore, // Inject Firestore service
+    public Auth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,
     public ngZone: NgZone) {
       /* Saving user data in localstorage when 
     logged in and setting up null when logged out */
-    this.afAuth.authState.subscribe((user) => {
+    this.Auth.authState.subscribe((user) => {
       if (user) {
         this.currentUser = user;
-        localStorage.setItem('username', JSON.stringify(this.currentUser));
-        JSON.parse(localStorage.getItem('username')!);
+        localStorage.setItem('email', JSON.stringify(this.currentUser));
+        JSON.parse(localStorage.getItem('email')!);
       } else {
-        localStorage.setItem('username', 'null');
-        JSON.parse(localStorage.getItem('username')!);
+        localStorage.setItem('email', 'null');
+        JSON.parse(localStorage.getItem('email')!);
       }
     });
   }
 
   // Sign up with email/password
   SignUp(user: CreateUserDto) {
-    return this.afAuth
+    return this.Auth
       .createUserWithEmailAndPassword(user.email, user.password)
       .then((result) => {
         /* Call the SendVerificaitonMail() function when new user sign 
@@ -64,7 +63,7 @@ export class UserService {
 
   // Send email verfificaiton when new user sign up
   SendVerificationMail() {
-    return this.afAuth.currentUser
+    return this.Auth.currentUser
       .then((u: any) => u.sendEmailVerification())
       .then(() => {
         this.router.navigate(['email-verification']);
@@ -72,10 +71,9 @@ export class UserService {
   }
 
   /* Setting up user data when sign in with username/password, 
-  sign up with username/password and sign in with social auth  
-  provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
+  sign up with username/password */
   SetUserData(user: any) {
-    const userRef: AngularFirestoreDocument<any> = this.afs.doc(
+    const userRef: AngularFirestoreDocument<any> = this.db.doc(
       `users/${user.uid}`
     );
     const userData: IUser = {
@@ -94,7 +92,7 @@ export class UserService {
 
   // Log in with email/password
   LogIn(email: string, password: string) {
-    return this.afAuth
+    return this.Auth
       .signInWithEmailAndPassword(email, password)
       .then(() => {
         this.ngZone.run(() => {
@@ -108,7 +106,7 @@ export class UserService {
 
   // Auth log in to run auth providers
   AuthLogin(provider: any) {
-    return this.afAuth
+    return this.Auth
       .signInWithPopup(provider)
       .then((result) => {
         this.ngZone.run(() => {
@@ -123,7 +121,7 @@ export class UserService {
 
   // Reset Forggot password
   ForgotPassword(passwordResetEmail: string) {
-    return this.afAuth
+    return this.Auth
       .sendPasswordResetEmail(passwordResetEmail)
       .then(() => {
         window.alert('Емийлът е изпратен успешно. Моля проверете го, също така и папката спам.');
@@ -133,9 +131,15 @@ export class UserService {
       });
   }
 
+  // Getting current user data
+  GetCurrentUserData$(): Observable<any> {
+    return this.db.collection("users")
+    .valueChanges({ idField: 'uid' == this.currentUser.uid });
+  }   
+
    // Log out
    LogOut() {
-    return this.afAuth.signOut().then(() => {
+    return this.Auth.signOut().then(() => {
       localStorage.removeItem('user');
       this.router.navigate(['login']);
     });

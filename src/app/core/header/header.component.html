@@ -20,12 +20,12 @@
                         <div class="btn-user-menu">
                             <i class="fa fa-user"></i>
                             <div class="user-menu">
-                                <ul>
+                                <ul *ngIf="isLogged">
                                     <li><a routerLink="profile"><i class="fa fa-user"></i> Моят профил</a></li>
                                     <li><a routerLink="my-cars-list"><i class="fa fa-car"></i> Моите обяви</a></li>
                                     <li><a href="#" (click)="logoutHandler()"><i class="fa fa-sign-out-alt"></i> Изход</a></li>
                                 </ul>
-                                <ul>
+                                <ul *ngIf="!isLogged">
                                     <li><a routerLink="login"><i class="fa fa-sign-in"></i> Вход</a></li>
                                     <li><a routerLink="register"><i class="fa fa-user-plus"></i> Регистрация</a></li>
                                 </ul>

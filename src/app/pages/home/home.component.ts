@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { ICar } from 'src/app/core/interfaces';
+import { CarService } from 'src/app/core/services/car.service';
 
 @Component({
   selector: 'autotrader-home',
@@ -8,12 +10,19 @@ import { Title } from '@angular/platform-browser';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(
-    private titleService: Title) { 
+  allCars!: ICar | any;
+
+  constructor( private titleService: Title, public carService: CarService,) { 
   }
 
   ngOnInit(): void {
     this.titleService.setTitle('Начало - Auto trader')
+
+    this.carService.GetAllCarsData$().subscribe({
+      next: (cars) => {
+        this.allCars = cars;
+      }
+    })
   }
 
 }
