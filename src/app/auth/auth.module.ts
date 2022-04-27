@@ -9,6 +9,7 @@ import { MyCarsListComponent } from './my-cars-list/my-cars-list.component';
 import { CoreModule } from '../core/core.module';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { SellYourCarComponent } from './sell-your-car/sell-your-car.component';
 
 
 
@@ -20,6 +21,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     MyCarsListComponent,
     VerifyEmailComponent,
     ForgotPasswordComponent,
+    SellYourCarComponent
   ],
   imports: [
     CommonModule,

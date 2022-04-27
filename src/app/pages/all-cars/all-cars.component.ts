@@ -13,6 +13,11 @@ export class AllCarsComponent implements OnInit {
   constructor(private titleService: Title, public carService: CarService,) { }
   
   allCars!: ICar | any;
+
+  async getUsers() {
+    this.allCars = await this.allCars.GetAllCarsData();
+    console.log(this.allCars);
+   }
   
   ngOnInit(): void {
     this.titleService.setTitle('Всички обяви - Auto trader')
@@ -20,6 +25,7 @@ export class AllCarsComponent implements OnInit {
     this.carService.GetAllCarsData$().subscribe({
       next: (cars) => {
         this.allCars = cars;
+        console.log( this.allCars);
       }
     })
   }

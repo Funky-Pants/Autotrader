@@ -11,12 +11,12 @@ import { ForgotPasswordComponent } from "./forgot-password/forgot-password.compo
 const routes: Routes = [
     { 
       path: 'register',  
-      canActivate: [!AuthGuard],
+      //canActivate: [AuthGuard],
       component: RegisterComponent 
     },
     { 
       path: 'login',  
-      canActivate: [!AuthGuard],
+      //canActivate: [AuthGuard],
       component: LoginComponent 
     },
     {
@@ -26,7 +26,7 @@ const routes: Routes = [
     },
     { 
       path: 'sell-your-car',
-      //canActivate: [AuthGuard],
+      canActivate: [AuthGuard],
       component: SellYourCarComponent 
     },
     { 

@@ -12,18 +12,23 @@ import { UserService } from 'src/app/core/services/user.service';
 })
 export class CarDetailsComponent implements OnInit {
 
-  currentUser!: IUser | any;
+  publishedUser!: IUser | any;
   currentCar!: ICar | any;
 
   constructor(private titleService: Title, public carService: CarService, public userService: UserService, private activatedRoute: ActivatedRoute) { }
 
-  ngOnInit(): void {
-    this.titleService.setTitle(`${this.currentCar[0].make + ` ` + this.currentCar[0].model} - Auto trader`)
-    
+  ngOnInit(): void {    
     this.activatedRoute.params.subscribe(params => {
       const cid = params['cid'];
       this.carService.GetSpecificCarData$(cid).subscribe(car => {
-        this.currentCar = car;
+        this.currentCar = car;        
+        this.titleService.setTitle(`${this.currentCar[0].make + ` ` + this.currentCar[0].model} - Auto trader`);
+        
+        this.userService.GetPublisherData$(this.currentCar[0].punlisherid).subscribe({
+          next: (user) => {
+            this.publishedUser = user;
+          }
+        })
       });
     })
   }

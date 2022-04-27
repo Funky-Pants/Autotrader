@@ -46,15 +46,24 @@ export class SellYourCarComponent implements OnInit {
     'price': new FormControl(null, [Validators.required]),
     'currency': new FormControl(null, [Validators.required]),
     'moreInfo': new FormControl(null),
-    'photoURL': new FormControl(null),
+    'photoURL': new FormControl(null, [Validators.required]),
   })
+
+  randomString(length: number) {
+    var randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var result = '';
+    for ( var i = 0; i < length; i++ ) {
+        result += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
+    }
+    return result;
+  }
   
   handleSelling(): void {
     const { make, model, specification, gearbox, month, year, fuel, emissions, cubicCapacity, power, kilometres,
             color, price, currency, moreInfo, photoURL} = this.sellCarFormGroup.value;
   
     const body: CreateCarDto = {
-      cid: '',
+      cid: this.randomString(20),
       make: make,
       model: model,
       specification: specification,
@@ -70,8 +79,9 @@ export class SellYourCarComponent implements OnInit {
       price: price,
       currency: currency,
       moreInfo: moreInfo,
-      photoURL: 'photoURL',
-      punlisherid: this.currentUser.uid,
+      photoURL: '/uploads/'+photoURL,
+      //photoURL: '../../../assets/img/add-picture.png',
+      punlisherid: this.currentUser[0].uid,
     }
     this.carService.SellCar(body)
   }

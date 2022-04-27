@@ -1,3 +1,33 @@
+.info {
+    p {
+        display: block;
+        width: 100%;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: var(--color-dark-grey);
+        background-color: var(--color-light-grey);
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        -webkit-appearance: none;
+        appearance: none;
+        border-radius: 0.25rem;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        font-family: "ObelixPro", Roboto, "Helvetica Neue", sans-serif;
+        letter-spacing: 0.4px;
+    }
+    .update-button-toggle {
+        background: var(--color-yellow);
+        color: var(--color-white);
+        font-size: 12px;
+        width: 100%;
+    }
+    .update-button-toggle:hover {
+        background-color: var(--color-dark);
+    }
+}
+
 .form-group {
     margin-bottom: 1rem;
     .update-button {

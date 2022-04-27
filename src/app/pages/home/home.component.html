@@ -58,33 +58,33 @@
         <div class="row">
             <article class="col-md-9">
                 <div class="row">
-                    <div class="col-lg-4 col-md-6" *ngFor="allCars">
+                    <div class="col-lg-4 col-md-6" *ngFor="let cars of allCars">
                         <div class="listing-item">
                             <div class="listing-item-pic">
-                                <img src="../../../assets/img/add-picture.png" alt="{{allCars.photoURL}}">
+                                <img src="{{cars.photoURL}}" alt="{{cars.make}} {{cars.model}}" title="{{cars.make}} {{cars.model}}">
                             </div>
                             <div class="listing-item-text row">
                                 <div class="listing-item-text-title col-sm-6">
-                                    <h5>{{allCars.make}} {{allCars.model}}</h5>
+                                    <h5>{{cars.make}} {{cars.model}}</h5>
                                 </div>
                                 <div class="listing-item-price col-sm-6">
-                                    <h6>{{allCars.price}}</h6>
+                                    <h6>{{cars.price}}</h6>
                                 </div>
                             </div>
                             <div class="listing-item-text">
                                 <div class="listing-item-text-info">
                                     <ul>
-                                        <li>{{allCars.month}}.{{allCars.year}} reg</li>
-                                        <li>{{allCars.gearbox}}</li>
-                                        <li>{{allCars.fuel}}</li>
-                                        <li>{{allCars.cubicCapacity}}</li>
-                                        <li>{{allCars.power}} hp</li>
-                                        <li>{{allCars.kilometres}} km.</li>
-                                        <li>{{allCars.emissions}}</li>
-                                        <li>{{allCars.color}}</li>
+                                        <li>{{cars.month}}.{{cars.year}} год.</li>
+                                        <li>{{cars.gearbox}}</li>
+                                        <li>{{cars.fuel}}</li>
+                                        <li>{{cars.cubicCapacity}}</li>
+                                        <li>{{cars.power}} к.с.</li>
+                                        <li>{{cars.kilometres}} км.</li>
+                                        <li>{{cars.emissions}}</li>
+                                        <li>{{cars.color}}</li>
                                     </ul>
                                 </div>
-                                <a routerLink="/car-details/{{allCars.cid}}" class="btn listing-item-button my-2"><i class="fa fa-eye"></i> Виж повече</a>
+                                <a routerLink="/car-details/{{cars.cid}}" class="btn listing-item-button my-2"><i class="fa fa-eye"></i> Виж повече</a>
                             </div>
                         </div>
                     </div>

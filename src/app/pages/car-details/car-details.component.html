@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <h1 class="text-center text-white">{{car.make}} {{car.model}} {{car.specification}}</h1>
+                    <h1 class="text-center text-white">{{car[0].make}} {{car[0].model}} {{car[0].specification}}</h1>
                     <hr>
                 </div>
             </div>
@@ -15,28 +15,57 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="row">
-                            <img src="{{car.photoURL}}" alt="{{car.make}}" />
+                            <img src="{{car[0].photoURL}}" alt="{{car[0].make}}" />
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="row mt-2">
-                            <div class="col-md-12">Цена: {{car.price}} {{car.currency}} </div>
+                            <div class="col-sm-6">
+                                <h6>Цена:</h6>
+                            </div>
+                            <div class="col-sm-6"><span>{{car[0].price}} {{car[0].currency}}</span></div>
                         </div>
                         <div class="row mt-2">
-                            <div class="col-sm-6"><span>Първа регистрация:</span></div>
-                            <div class="col-sm-6"><span>{{car.month}} {{car.year}}</span></div>
-                            <div class="col-sm-6"><span>Тип двигател:</span></div>
-                            <div class="col-sm-6"><span>{{car.fuel}}</span></div>
-                            <div class="col-sm-6"><span>Обем на двигателя:</span></div>
-                            <div class="col-sm-6"><span>{{car.cubicCapacity}} ccm</span></div>
-                            <div class="col-sm-6"><span>Мощност:</span></div>
-                            <div class="col-sm-6"><span>{{car.power}} к.с.</span></div>
-                            <div class="col-sm-6"><span>Километри:</span></div>
-                            <div class="col-sm-6"><span>{{car.kilometres}} км.</span></div>
-                            <div class="col-sm-6"><span>Евростандарт:</span></div>
-                            <div class="col-sm-6"><span>{{car.emissions}}</span></div>
-                            <div class="col-sm-6"><span>Цвят:</span></div>
-                            <div class="col-sm-6"><span>{{car.color}}</span></div>
+                            <div class="col-sm-6">
+                                <h6>Първа регистрация:</h6>
+                            </div>
+                            <div class="col-sm-6"><span>{{car[0].month}} {{car[0].year}}</span></div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-sm-6">
+                                <h6>Тип двигател:</h6>
+                            </div>
+                            <div class="col-sm-6"><span>{{car[0].fuel}}</span></div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-sm-6">
+                                <h6>Обем на двигателя:</h6>
+                            </div>
+                            <div class="col-sm-6"><span>{{car[0].cubicCapacity}} ccm</span></div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-sm-6">
+                                <h6>Мощност:</h6>
+                            </div>
+                            <div class="col-sm-6"><span>{{car[0].power}} к.с.</span></div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-sm-6">
+                                <h6>Километри:</h6>
+                            </div>
+                            <div class="col-sm-6"><span>{{car[0].kilometres}} км.</span></div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-sm-6">
+                                <h6>Евростандарт:</h6>
+                            </div>
+                            <div class="col-sm-6"><span>{{car[0].emissions}}</span></div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-sm-6">
+                                <h6>Цвят:</h6>
+                            </div>
+                            <div class="col-sm-6"><span>{{car[0].color}}</span></div>
                         </div>
                     </div>
                 </div>
@@ -44,19 +73,19 @@
                     <div class="col-md-12 mt-3">
                         <h6>Повече информация</h6>
                         <hr/>
-                        <p>{{car.moreInfo}}</p>
+                        <p>{{car[0].moreInfo}}</p>
                     </div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-12">
+                    <div class="col-md-12" *ngIf="publishedUser as user">
                         <div class="card border-dark mb-3">
                             <div class="card-header">Публикувана от</div>
                             <div class="card-body row align-items-center">
-                                <div class="col-md-4"><img src="{{currentUser.photoURL}}" class="ïmg-fluid"></div>
+                                <div class="col-md-4"><img src="{{user[0].photoURL}}" class="ïmg-fluid user-img-ad" title="{{user[0].username}}" alt="{{user[0].username}}"></div>
                                 <div class="col-md-6">
-                                    <h5 class="card-title">{{currentUser.username}}</h5>
-                                    <p class="card-text"><i class="fa fa-phone"></i>{{currentUser.phoneNumber}}</p>
-                                    <p class="card-text"><i class="fa fa-globe"></i>{{currentUser.city}}</p>
+                                    <h5 class="card-title">{{user[0].username}}</h5>
+                                    <p class="card-text"><i class="fa fa-phone"></i> {{user[0].phoneNumber}}</p>
+                                    <p class="card-text"><i class="fa fa-globe"></i> {{user[0].city}}</p>
                                 </div>
                             </div>
                         </div>

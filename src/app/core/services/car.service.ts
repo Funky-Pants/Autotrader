@@ -20,9 +20,7 @@ export class CarService {
      /* Setting up car data when when add new advertisment, 
     to the db */
     SellCar(car: CreateCarDto) {
-      const userRef: AngularFirestoreDocument<any> = this.db.doc(
-        `cars/${car.cid}`
-      );
+      
       const carData: ICar = {
         cid: car.cid,
         make: car.make,
@@ -43,23 +41,23 @@ export class CarService {
         photoURL: car.photoURL,
         punlisherid: car.punlisherid,
       };
-      return userRef.set(carData, {
-        merge: true,
-      }).then(() => {
-        this.router.navigate(['car-details']);    
+
+      this.db.collection('cars').doc(car.cid).set(carData).then(() => {
+        window.alert("Обявата е добавена успешно");
+        this.router.navigate([`car-details/${car.cid}`]);    
       })
       .catch((error) => {
         window.alert(error.message);
-      });;
+      });
     }
 
     // Getting data for all published cars
     GetAllCarsData$(): Observable<any> {
       return this.db.collection("cars")
-      .valueChanges({ idField: 'uid' });
-    } 
+      .valueChanges({ idField: 'cid' });
+    }
 
-    // Getting data for all published cars
+    // Getting data for chosen car
     GetSpecificCarData$(cid: string): Observable<any> {
       return this.db.collection("cars")
       .valueChanges({ idField: 'cid' == cid });
@@ -69,5 +67,17 @@ export class CarService {
     GetSpecificUserCarsData$(punlisherid: string): Observable<any> {
       return this.db.collection("cars")
       .valueChanges({ idField: 'punlisherid' == punlisherid });
-    }  
+    } 
+    
+    //Deleting car advertisement from the db
+    DeleteCar(cid: any) {
+      this.db.doc(`cars/${cid}`).delete();
+      this.db.collection('cars').doc(cid).delete().then(() => {
+        window.alert("Обявата е изтрита успешно");
+        let currentUrl = this.router.url;
+        this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+              this.router.navigate([currentUrl]);
+        });  
+      })
+    }
 }

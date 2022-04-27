@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from 'src/app/core/services/user.service';
+import { UpdateUserDto, UserService } from 'src/app/core/services/user.service';
 import { Title } from '@angular/platform-browser';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { passwordMatch } from '../util';
@@ -19,6 +19,8 @@ export class ProfileComponent implements OnInit {
 
   currentUser!: IUser | any;
 
+  isInEditMode: boolean = false;
+
   ngOnInit() {
     this.userService.GetCurrentUserData$().subscribe({
       next: (user) => {
@@ -31,28 +33,34 @@ export class ProfileComponent implements OnInit {
     })
   }
 
-  passwordControl = new FormControl(null, [Validators.minLength(6)]);
-
-  get passwordsGroup(): FormGroup {
-    return this.profileFormGroup.controls['passwords'] as FormGroup;
-  }
-
   profileFormGroup: FormGroup = this.formBuilder.group({
+    'username': new FormControl(),
     'currentPassword': new FormControl(null, [Validators.required, Validators.minLength(6)]),
-    'passwords': new FormGroup({
-      'newPassword': this.passwordControl,
-      'rePassword': new FormControl(null, [passwordMatch(this.passwordControl)]),
-    }),
-    'phoneNumber': new FormControl(null, [Validators.required, Validators.minLength(6)]),
-    'city': new FormControl(null, [Validators.required, Validators.minLength(3)]),
+    'phoneNumber': new FormControl(),
+    'city': new FormControl(),
   })
 
   shouldShowErrorForControl(controlName: string, sourceGroup: FormGroup = this.profileFormGroup) {
     return sourceGroup.controls[controlName].invalid
   }
 
-  updateProfile(): void {
-    // TODO.
+  enterEditMode(): void {
+    this.isInEditMode = true;
+  }
+
+  handleUpdate(): void {
+
+    const { username, photoURL, phoneNumber, city } = this.profileFormGroup.value;
+  
+    const body: UpdateUserDto = {
+      uid: this.currentUser[0].uid,
+      username: username ? username : this.currentUser[0].username,
+      photoURL: photoURL ? photoURL : this.currentUser[0].photoURL,
+      phoneNumber: phoneNumber ? phoneNumber : this.currentUser[0].phoneNumber,
+      city: city ? city : this.currentUser[0].city,
+    }
+
+    this.userService.UpdateProfile(body)
   }
 
 }

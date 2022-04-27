@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 
 export interface CreateUserDto { uid: string, username: string, email: string, password: string, photoURL: string, phoneNumber: number, city: string, emailVerified: boolean }
 
-export interface UpdateUserDto { password: string, phoneNumber: number }
+export interface UpdateUserDto { uid: string; username:string, photoURL: string, city: string, phoneNumber: number }
 
 export interface LoginUserDto { email: string, password: string }
 
@@ -131,11 +131,41 @@ export class UserService {
       });
   }
 
+  //Updating current user profile
+  UpdateProfile(user: any) {
+    const userRef: AngularFirestoreDocument<any> = this.db.doc(
+      `users/${user.uid}`
+    );
+    const userData = {
+      username: user.username,
+      phoneNumber: user.phoneNumber,
+      photoURL: user.photoURL,
+      city: user.city,
+    };
+    userRef.update(userData)
+    .then(() => {
+      window.alert('Профилът е ъпдейтнат успешно');
+      let currentUrl = this.router.url;
+      this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+          this.router.navigate([currentUrl]);
+      });
+    })
+    .catch((error) => {
+      window.alert(error.message);
+    });;
+  }
+
   // Getting current user data
   GetCurrentUserData$(): Observable<any> {
     return this.db.collection("users")
     .valueChanges({ idField: 'uid' == this.currentUser.uid });
-  }   
+  }
+  
+  // Getting current user data
+  GetPublisherData$(uid: string): Observable<any> {
+    return this.db.collection("users")
+    .valueChanges({ idField: 'uid' == uid });
+  }
 
    // Log out
    LogOut() {
