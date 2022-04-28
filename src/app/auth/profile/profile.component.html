@@ -42,10 +42,8 @@
                     <div class="col-md-4">
                         <div class="form-group row justify-content-center profile-picture">
                             <div class="col-sm-12 ">
-                                <img id="profile-img" src="{{user[0].photoURL}}" alt="Profile image">
-                            </div>
-                            <div class="col-sm-12 mt-1">
-                                <input type="file" name="image" class="input" accept="image">
+                                <img id="profile-img" accept="image/png,image/jpg" [src]="imgSrc" alt="Profile image" class="img-fluid" (click)="fileUploader.click()">
+                                <input (change)="showPreview($event)" #fileUploader formControlName="photoURL" type="file" name="image" class="input" accept="image">
                             </div>
                         </div>
                     </div>

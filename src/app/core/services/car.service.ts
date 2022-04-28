@@ -1,18 +1,20 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { finalize, Observable } from 'rxjs';
 import { ICar } from '../interfaces';
 
 export interface CreateCarDto { cid: string, make: string, model: string, specification: string, gearbox: string, month: number, year: number, fuel: string
                                 emissions: string, cubicCapacity: number, power: number, kilometres: number, color: string, price: number, currency: number,
-                                moreInfo: string, photoURL: string, punlisherid: string }
+                                moreInfo: string, photoURL: string, photo: any, punlisherid: string }
 
 @Injectable({providedIn: 'root'})
 export class CarService {
 
   constructor(
-    public db: AngularFirestore, // Inject Firestore service
+    public db: AngularFirestore,
+    public dbStorage: AngularFireStorage, 
     public router: Router,
     ) { }
 
@@ -20,6 +22,17 @@ export class CarService {
      /* Setting up car data when when add new advertisment, 
     to the db */
     SellCar(car: CreateCarDto) {
+
+      //Uploading img to FireStore
+      const _photoURL = this.dbStorage.ref(car.photoURL);
+
+      this.dbStorage.upload(car.photoURL, car.photo).snapshotChanges().pipe(
+        finalize(()=>{          
+          _photoURL.getDownloadURL().subscribe((url) =>{
+            car.photoURL = url;
+          })
+        })
+      ).subscribe();
       
       const carData: ICar = {
         cid: car.cid,

@@ -14,6 +14,8 @@ import { UserService } from 'src/app/core/services/user.service';
 export class SellYourCarComponent implements OnInit {
 
   currentUser!: IUser | any;
+  imgSrc: string = "../../../assets/img/add-picture.png";
+  selectedImg: any;
 
   constructor(private titleService: Title, private formBuilder: FormBuilder, public carService: CarService, public userService: UserService, private router: Router) { }
 
@@ -49,6 +51,7 @@ export class SellYourCarComponent implements OnInit {
     'photoURL': new FormControl(null, [Validators.required]),
   })
 
+  //Generating random string for car id in db
   randomString(length: number) {
     var randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     var result = '';
@@ -58,9 +61,24 @@ export class SellYourCarComponent implements OnInit {
     return result;
   }
   
+  //Showing the preview of selected img
+  showPreview($event: any){
+    if($event.target.files && $event.target.files[0]){
+      const reader = new FileReader();
+      reader.onload = (e: any) => this.imgSrc = e.target.result;
+      reader.readAsDataURL($event.target.files[0]);
+      this.selectedImg = $event.target.files[0];
+    }
+    else{
+      this.imgSrc = "../../../assets/img/add-picture.png";
+      this.selectedImg = "";
+    }
+  }
+
+  //Collecting and sending the data to writing function
   handleSelling(): void {
     const { make, model, specification, gearbox, month, year, fuel, emissions, cubicCapacity, power, kilometres,
-            color, price, currency, moreInfo, photoURL} = this.sellCarFormGroup.value;
+            color, price, currency, moreInfo} = this.sellCarFormGroup.value;
   
     const body: CreateCarDto = {
       cid: this.randomString(20),
@@ -79,8 +97,8 @@ export class SellYourCarComponent implements OnInit {
       price: price,
       currency: currency,
       moreInfo: moreInfo,
-      photoURL: '/uploads/'+photoURL,
-      //photoURL: '../../../assets/img/add-picture.png',
+      photoURL: `/images/cars/${new Date().getTime()}-${this.selectedImg.name.split('.').slice(0,-1)}`,
+      photo: this.selectedImg,
       punlisherid: this.currentUser[0].uid,
     }
     this.carService.SellCar(body)

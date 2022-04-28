@@ -193,8 +193,13 @@
                 </div>
                 <div class="form-group row">
                     <div class="car-picture col-md-4 mt-3">
-                        <img id="profile-img" src="../../../assets/img/add-picture.png" alt="Add image" class="img-fluid">
-                        <input formControlName="photoURL" type="file" name="image" class="input" accept="image">
+                        <img id="car-img" accept="image/png,image/jpg" [src]="imgSrc" alt="Add image" class="img-fluid" (click)="fileUploader.click()">
+                        <input (change)="showPreview($event)" #fileUploader formControlName="photoURL" type="file" name="image" class="input" accept="image">
+                        <ng-container *ngIf="sellCarFormGroup.controls['photoURL'].touched && sellCarFormGroup.controls['photoURL'].invalid">
+                            <p *ngIf="sellCarFormGroup.controls['photoURL'].errors?.['required']" class="error">
+                                Полето "Снимка" е задължително!
+                            </p>
+                        </ng-container>
                     </div>
                     <div class="col-md-8 mt-3">
                         <label for="input-more-information">Повече информация</label>

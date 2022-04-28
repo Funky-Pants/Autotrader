@@ -4,11 +4,12 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore, AngularFirestoreDocument, } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { getAuth } from 'firebase/auth';
-import { Observable } from 'rxjs';
+import { finalize, Observable } from 'rxjs';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 
 export interface CreateUserDto { uid: string, username: string, email: string, password: string, photoURL: string, phoneNumber: number, city: string, emailVerified: boolean }
 
-export interface UpdateUserDto { uid: string; username:string, photoURL: string, city: string, phoneNumber: number }
+export interface UpdateUserDto { uid: string; username:string, photoURL: string, photo: any, city: string, phoneNumber: number }
 
 export interface LoginUserDto { email: string, password: string }
 
@@ -28,6 +29,7 @@ export class UserService {
   constructor(
     public db: AngularFirestore, // Inject Firestore service
     public Auth: AngularFireAuth, // Inject Firebase auth service
+    public dbStorage: AngularFireStorage, 
     public router: Router,
     public ngZone: NgZone) {
       /* Saving user data in localstorage when 
@@ -136,6 +138,16 @@ export class UserService {
     const userRef: AngularFirestoreDocument<any> = this.db.doc(
       `users/${user.uid}`
     );
+    const _photoURL = this.dbStorage.ref(user.photoURL);
+
+    this.dbStorage.upload(user.photoURL, user.photo).snapshotChanges().pipe(
+      finalize(()=>{          
+        _photoURL.getDownloadURL().subscribe((url) =>{
+          user.photoURL = url;
+        })
+      })
+    ).subscribe();
+    
     const userData = {
       username: user.username,
       phoneNumber: user.phoneNumber,
